@@ -1,62 +1,74 @@
 import React, { Component } from "react";
-import {
-  Container,
-  Header,
-  Title,
-  Content,
-  Text,
-  Button,
-  Icon,
-  Footer,
-  FooterTab,
-  Left,
-  Right,
-  Body
-} from "native-base";
+import { Content, Text, Container } from "native-base";
+import HeaderLayout from './structure/header-layout';
+import FooterLayout from './structure/footer-layout';
+import Savings from './savings/containers/savings';
+import Expenses from './expenses/containers/expenses';
+import Incomes from './incomes/containers/incomes';
+import Goals from "./goals/containers/goals";
+import Book from './book/containers/book';
 
 class AppLayout extends Component {
+  state = {
+    selected: 'savings'
+  }
+
+  handleChangeIncomes = event => {
+    this.setState({
+      selected: 'incomes'
+    })
+  }
+  
+  handleChangeExpenses = event => {
+    this.setState({
+      selected: 'expenses'
+    })
+  }
+  
+  handleChangeSavings = event => {
+    this.setState({
+      selected: 'savings'
+    })
+  }
+  
+  handleChangeGoals = event => {
+    this.setState({
+      selected: 'goals'
+    })
+  }
+
+  handleChangeBook = event => {
+    this.setState({
+      selected: 'book'
+    })
+  }
+
   render() {
     return (
       <Container>
-        <Header>
-          <Left>
-            <Button
-              transparent
-              onPress={() => this.props.navigation.navigate("DrawerOpen")}
-            >
-              <Icon name="ios-menu" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Oinkii</Title>
-          </Body>
-          <Right />
-        </Header>
-
+        <HeaderLayout/>
         <Content padder>
-          <Text>Content goes here</Text>
+          {
+            this.state.selected == 'incomes' ? 
+            <Incomes /> :
+            this.state.selected == 'expenses' ? 
+            <Expenses /> :
+            this.state.selected == 'savings' ?
+            <Savings /> :
+            this.state.selected == 'goals' ? 
+            <Goals /> :
+            this.state.selected == 'book' ?
+            <Book /> : ''
+          }
         </Content>
-
-        <Footer>
-          <FooterTab>
-            <Button vertical>
-              <Icon name="apps" />
-              <Text>Apps</Text>
-            </Button>
-            <Button vertical>
-              <Icon name="camera" />
-              <Text>Camera</Text>
-            </Button>
-            <Button vertical active>
-              <Icon active name="navigate" />
-              <Text>Navigate</Text>
-            </Button>
-            <Button vertical>
-              <Icon name="person" />
-              <Text>Contact</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
+        <FooterLayout
+          handleChangeIncomes={this.handleChangeIncomes}
+          handleChangeExpenses={this.handleChangeExpenses}
+          handleChangeSavings={this.handleChangeSavings}
+          handleChangeGoals={this.handleChangeGoals}
+          handleChangeBook={this.handleChangeBook}
+          selected={this.state.selected}
+        />
       </Container>
     );
   }
