@@ -1,12 +1,20 @@
-import React, { Component } from 'react';
-import { Title, Button } from 'native-base';
-import { Text, View } from 'react-native';
+import React, { Component } from "react";
+import { Title } from "native-base";
+import { View } from "react-native";
+import MainCard from '../../structure/main-card';
 
 class Savings extends Component {
   render() {
     return (
-      <Title>Ahorro</Title>
-    )
+      <View>
+        <MainCard 
+          initialColor="#6E4F94"
+          finalColor="#402B60"
+          title="Ahorros"
+        />
+        <Title padder>Detalles</Title>
+      </View>
+    );
   }
 }
 

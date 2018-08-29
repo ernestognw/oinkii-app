@@ -2,7 +2,7 @@ import React from "react";
 import { Footer, FooterTab, Button, Icon } from "native-base";
 import { Text } from 'react-native';
 import { StyleSheet } from 'react-native';
-import FooterButton from '../savings/containers/components/footer-button';
+import FooterButton from './footer-button';
 
 function FooterLayout(props) {
   return (
