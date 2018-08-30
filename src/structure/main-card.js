@@ -1,11 +1,11 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import { Title } from "native-base";
+import { Text, StyleSheet } from "react-native";
+import { Title, View } from "native-base";
 import LinearGradient from "react-native-linear-gradient";
 
 function MainCard(props) {
   return (
-    <View style={styles.mainView}>
+    <View scrollEnabled={false} padder style={styles.mainView}>
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
@@ -13,6 +13,9 @@ function MainCard(props) {
         style={styles.linearGradient}
       >
         <Title style={styles.buttonText}>{props.title}</Title>
+        <View style={styles.numberContainer}>
+          <Text style={styles.mainNumber}>{props.value}</Text>
+        </View>
       </LinearGradient>
     </View>
   );
@@ -37,10 +40,19 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 18,
     textAlign: "center",
-    margin: 10,
+    marginTop: 10,
     color: "#ffffff",
-    height: "50%",
     backgroundColor: "transparent"
+  },
+  numberContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  mainNumber: {
+    fontSize: 70,
+    color: "white",
+    fontWeight: "bold"
   }
 });
 

@@ -47,7 +47,7 @@ class AppLayout extends Component {
     return (
       <Container>
         <HeaderLayout/>
-        <Content padder>
+        <Content>
           {
             this.state.selected == 'incomes' ? 
             <Incomes /> :

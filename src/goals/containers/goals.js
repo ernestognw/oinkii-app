@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Title } from 'native-base';
 import MainCard from '../../structure/main-card';
 import { View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 class Goals extends Component {
   render() {
