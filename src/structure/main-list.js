@@ -1,118 +1,7 @@
 import React, { Component } from "react";
 import { Icon, Right, Content, Left, List, ListItem, Body } from "native-base";
-import { Text, StyleSheet, View, FlatList } from "react-native";
+import { Text, StyleSheet, View, FlatList, ActivityIndicator } from "react-native";
 import ListRecord from "./list-record";
-
-var fakeRecords = [
-  {
-    quantity: "500",
-    description: "Ingreso con descripción",
-    income: true,
-    hour: "3:43 pm"
-  },
-  {
-    quantity: "400",
-    description: "Gasto con descripción",
-    income: false,
-    hour: "3:43 pm"
-  },
-  {
-    quantity: "500",
-    description: "Ingreso con descripción",
-    income: true,
-    hour: "3:43 pm"
-  },
-  {
-    quantity: "400",
-    description: "Gasto con descripción",
-    income: false,
-    hour: "3:43 pm"
-  },
-  {
-    quantity: "500",
-    description: "Ingreso con descripción",
-    income: true,
-    hour: "3:43 pm"
-  },
-  {
-    quantity: "400",
-    description: "Gasto con descripción",
-    income: false,
-    hour: "3:43 pm"
-  },
-  {
-    quantity: "500",
-    description: "Ingreso con descripción",
-    income: true,
-    hour: "3:43 pm"
-  },
-  {
-    quantity: "400",
-    description: "Gasto con descripción",
-    income: false,
-    hour: "3:43 pm"
-  },
-  {
-    quantity: "500",
-    description: "Ingreso con descripción",
-    income: true,
-    hour: "3:43 pm"
-  },
-  {
-    quantity: "400",
-    description: "Gasto con descripción",
-    income: false,
-    hour: "3:43 pm"
-  },
-  {
-    quantity: "500",
-    description: "Ingreso con descripción",
-    income: true,
-    hour: "3:43 pm"
-  },
-  {
-    quantity: "400",
-    description: "Gasto con descripción",
-    income: false,
-    hour: "3:43 pm"
-  },
-  {
-    quantity: "500",
-    description: "Ingreso con descripción",
-    income: true,
-    hour: "3:43 pm"
-  },
-  {
-    quantity: "400",
-    description: "Gasto con descripción",
-    income: false,
-    hour: "3:43 pm"
-  },
-  {
-    quantity: "500",
-    description: "Ingreso con descripción",
-    income: true,
-    hour: "3:43 pm"
-  },
-  {
-    quantity: "400",
-    description: "Gasto con descripción",
-    income: false,
-    hour: "3:43 pm"
-  },
-  {
-    quantity: "500",
-    description: "Ingreso con descripción",
-    income: true,
-    hour: "3:43 pm"
-  },
-  {
-    quantity: "400",
-    description: "Gasto con descripción",
-    income: false,
-    hour: "3:43 pm"
-  }
-];
 
 class MainList extends Component {
   renderItem = ({ item }) => {
@@ -120,22 +9,27 @@ class MainList extends Component {
   };
 
   keyExtractor = (item, index) => index.toString();
+
   renderEmpty = () => (
-    <Text style={styles.emptyText}>Por ahora no tienes registros :(</Text>
+    <View style={styles.emptyView}>
+    { 
+      this.props.userDataLoading ? 
+      <ActivityIndicator size="small" color="#65A4D2" /> :
+      <Text>Por ahora no tienes registros :(</Text>
+    }
+    </View>
   );
 
   render() {
     return (
-      <View>
-        <List>
+      <List>
           <FlatList
             keyExtractor={this.keyExtractor}
-            data={fakeRecords}
+            data={this.props.userData}
             ListEmptyComponent={this.renderEmpty}
             renderItem={this.renderItem}
           />
-        </List>
-      </View>
+      </List>
     );
   }
 }
@@ -144,9 +38,9 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 10
   },
-  emptyText: {
-    textAlign: "center",
-    fontSize: 16
+  emptyView: {
+    marginTop: 40,
+    alignItems: "center",
   }
 });
 

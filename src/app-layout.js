@@ -7,39 +7,39 @@ import Expenses from './expenses/containers/expenses';
 import Incomes from './incomes/containers/incomes';
 import Goals from "./goals/containers/goals";
 import Book from './book/containers/book';
+import { connect } from 'react-redux';
+import store from './redux/store'
+import fakeApi from './redux/fake-api';
 
 class AppLayout extends Component {
-  state = {
-    selected: 'savings'
-  }
-
-  handleChangeIncomes = event => {
-    this.setState({
-      selected: 'incomes'
+  
+  handleChangeIncomes = () => {
+    store.dispatch({
+      type: 'SET_ROUTE_INCOMES'
     })
   }
   
-  handleChangeExpenses = event => {
-    this.setState({
-      selected: 'expenses'
+  handleChangeExpenses = () => {
+    store.dispatch({
+      type: 'SET_ROUTE_EXPENSES'
     })
   }
   
-  handleChangeSavings = event => {
-    this.setState({
-      selected: 'savings'
+  handleChangeSavings = () => {
+    store.dispatch({
+      type: 'SET_ROUTE_SAVINGS'
     })
   }
   
-  handleChangeGoals = event => {
-    this.setState({
-      selected: 'goals'
+  handleChangeGoals = () => {
+    store.dispatch({
+      type: 'SET_ROUTE_GOALS'
     })
   }
 
-  handleChangeBook = event => {
-    this.setState({
-      selected: 'book'
+  handleChangeBook = () => {
+    store.dispatch({
+      type: 'SET_ROUTE_BOOK'
     })
   }
 
@@ -49,15 +49,15 @@ class AppLayout extends Component {
         <HeaderLayout/>
         <Content>
           {
-            this.state.selected == 'incomes' ? 
+            this.props.selected == 'incomes' ? 
             <Incomes /> :
-            this.state.selected == 'expenses' ? 
+            this.props.selected == 'expenses' ? 
             <Expenses /> :
-            this.state.selected == 'savings' ?
+            this.props.selected == 'savings' ?
             <Savings /> :
-            this.state.selected == 'goals' ? 
+            this.props.selected == 'goals' ? 
             <Goals /> :
-            this.state.selected == 'book' ?
+            this.props.selected == 'book' ?
             <Book /> : ''
           }
         </Content>
@@ -67,11 +67,17 @@ class AppLayout extends Component {
           handleChangeSavings={this.handleChangeSavings}
           handleChangeGoals={this.handleChangeGoals}
           handleChangeBook={this.handleChangeBook}
-          selected={this.state.selected}
+          selected={this.props.selected}
         />
       </Container>
     );
   }
 }
 
-export default AppLayout;
+function mapStateToProps (state) {
+  return {
+    selected: state.selected,
+  }
+}
+
+export default connect(mapStateToProps)(AppLayout);

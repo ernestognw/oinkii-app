@@ -3,6 +3,7 @@ import { Title, View } from "native-base";
 import { Text } from "react-native";
 import MainCard from "../../structure/main-card";
 import MainList from "../../structure/main-list";
+import { connect } from 'react-redux';
 
 class Savings extends Component {
   render() {
@@ -15,10 +16,20 @@ class Savings extends Component {
           value="$900"
         />
         <Title padder>Detalles</Title>
-        <MainList />
+        <MainList 
+          userData={this.props.userData}
+          userDataLoading={this.props.userDataLoading}
+        />
       </View>
     );
   }
 }
 
-export default Savings;
+function mapStateToProps(state) {
+  return {
+    userData: state.userData,
+    userDataLoading: state.userDataLoading
+  }
+}
+
+export default connect(mapStateToProps)(Savings);

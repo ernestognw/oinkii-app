@@ -6,7 +6,7 @@ function ListRecord(props) {
   return (
     <ListItem avatar>
       <Left>
-        <Icon type="Entypo" name={props.income ? 'circle-with-plus' : 'circle-with-minus'} style={props.income ? styles.iconIncome : styles.iconExpense} />
+        <Icon type="MaterialIcons" name={props.income ? 'attach-money' : 'money-off'} style={props.income ? styles.iconIncome : styles.iconExpense} />
       </Left>
       <Body>
         <Text>${props.quantity}</Text>
@@ -14,6 +14,7 @@ function ListRecord(props) {
       </Body>
       <Right>
         <Text note>{props.hour}</Text>
+        <Text note style={styles.comment}>{props.date}</Text>
       </Right>
     </ListItem>
   );
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
   },
   iconExpense: {
     color: '#B73A77'
-  },
+  }
 })
 
 export default ListRecord;
