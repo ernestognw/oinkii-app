@@ -13,7 +13,7 @@ class MainList extends Component {
   renderEmpty = () => (
     <View style={styles.emptyView}>
     { 
-      this.props.userDataLoading ? 
+      !this.props.userDataLoaded ? 
       <ActivityIndicator size="small" color="#65A4D2" /> :
       <Text>Por ahora no tienes registros :(</Text>
     }
@@ -25,7 +25,7 @@ class MainList extends Component {
       <List>
           <FlatList
             keyExtractor={this.keyExtractor}
-            data={this.props.userData}
+            data={this.props.data}
             ListEmptyComponent={this.renderEmpty}
             renderItem={this.renderItem}
           />

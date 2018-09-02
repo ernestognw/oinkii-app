@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import AppNavigator from './app-navigator';
 import { reduxifyNavigator } from 'react-navigation-redux-helpers';
+import AppNavigator from './app-navigator';
 
 const ReduxifyApp = reduxifyNavigator(AppNavigator, 'root')
 

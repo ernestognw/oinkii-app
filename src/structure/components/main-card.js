@@ -14,7 +14,7 @@ function MainCard(props) {
       >
         <Title style={styles.buttonText}>{props.title}</Title>
         <View style={styles.numberContainer}>
-          <Text style={styles.mainNumber}>{props.value}</Text>
+          <Text style={styles.mainNumber}>${props.value}</Text>
         </View>
       </LinearGradient>
     </View>

@@ -25,10 +25,12 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
   iconIncome: {
-    color: '#A1BE4F'
+    color: '#A1BE4F',
+    fontSize: 18,
   },
   iconExpense: {
-    color: '#B73A77'
+    color: '#B73A77',
+    fontSize: 18,
   }
 })
 

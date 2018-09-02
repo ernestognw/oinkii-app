@@ -84,7 +84,7 @@ export default {
   statusBarColor: "rgba(244,244,244,1)",
   darkenHeader: "#F0F0F0",
   iconFamily: "SimpleLineIcons",
-  iconFontSize: 30,
+  iconFontSize: 24,
   iconHeaderSize: 29,
   inputFontSize: 17,
   inputBorderColor: "#D9D5DC",

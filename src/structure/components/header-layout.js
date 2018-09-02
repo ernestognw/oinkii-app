@@ -16,7 +16,7 @@ function HeaderLayout(props) {
       </Left>
       <Body>
       <Image 
-        source={require('../../assets/logo.png')}
+        source={require('../../../assets/logo.png')}
         style={styles.logo}
       />
       </Body>
