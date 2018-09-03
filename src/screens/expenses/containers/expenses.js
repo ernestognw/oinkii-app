@@ -11,7 +11,6 @@ class Expenses extends Component {
     var expensesList = []
     for (i = 0; i < this.props.balanceData.length; i++) {
       if (!this.props.balanceData[i].income) {
-        console.log(this.props.balanceData[i])
         expensesList.push(this.props.balanceData[i]);
       }
     }

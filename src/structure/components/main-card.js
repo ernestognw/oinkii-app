@@ -1,6 +1,6 @@
 import React from "react";
-import { Text, StyleSheet } from "react-native";
-import { Title, View } from "native-base";
+import { StyleSheet, TouchableOpacity } from "react-native";
+import { Title, View, Button, Text } from "native-base";
 import LinearGradient from "react-native-linear-gradient";
 
 function MainCard(props) {
@@ -15,6 +15,14 @@ function MainCard(props) {
         <Title style={styles.buttonText}>{props.title}</Title>
         <View style={styles.numberContainer}>
           <Text style={styles.mainNumber}>${props.value}</Text>
+          <TouchableOpacity
+            onPress={() => console.log('hola mundo')}
+            style={styles.button}
+          >
+            <Text style={styles.buttonLabel}>
+              Agregar
+            </Text>
+          </TouchableOpacity>
         </View>
       </LinearGradient>
     </View>
@@ -22,6 +30,17 @@ function MainCard(props) {
 }
 
 const styles = StyleSheet.create({
+  button: {
+    justifyContent: "center",
+    borderRadius: 10,
+    borderColor: 'white',
+    borderWidth: 1,
+  },
+  buttonLabel: {
+    padding: 10,
+    color: 'white',
+    fontSize: 12,
+  },
   linearGradient: {
     flex: 1,
     borderRadius: 15,
