@@ -99,7 +99,7 @@ const SwitchNavigator = createStackNavigator(
     Loading: Loading,
   },
   {
-    initialRouteName: 'Loading',
+    initialRouteName: 'App',
     headerMode: 'none',
     cardStyle: {
       backgroundColor: 'white',

@@ -4,7 +4,7 @@ import LoadingLayout from '../components/loading-layout';
 
 class Loading extends Component {
   componentDidMount() {
-    if(this.props.user) {
+    if(this.props.userData) {
       this.props.navigation.navigate('App');
     } else {
       this.props.navigation.navigate('Login');
@@ -16,7 +16,7 @@ class Loading extends Component {
 }
 function mapStateToProps(state) {
   return {
-    user: state.user
+    userData: state.userData
   }
 }
 

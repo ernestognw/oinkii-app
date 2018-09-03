@@ -14,9 +14,9 @@ class App extends Component {
     await setTimeout(() => {
       console.log(fakeApi)
       store.dispatch({
-        type: 'SET_USER_DATA',
+        type: 'SET_BALANCE_DATA',
         payload: {
-          userData: fakeApi
+          balanceData: fakeApi
         }
       })
     }, 2000)

@@ -13,13 +13,9 @@ import {
 } from "native-base";
 import firebase from 'react-native-firebase';
 import { AccessToken, LoginManager } from 'react-native-fbsdk';
+import store from '../../../redux/store';
 
 class Login extends Component {
-  handleLogin = () => {
-    store.dispatch({
-      type: 'LOGIN'
-    })
-  }
 
   facebookLogin = async () => {
     try {
@@ -43,7 +39,16 @@ class Login extends Component {
   
       // login with credential
       const currentUser = await firebase.auth().signInAndRetrieveDataWithCredential(credential);
-  
+      
+      store.dispatch({
+        type: 'SET_USER_DATA',
+        payload: {
+          userData: currentUser.user
+        }
+      })
+
+      this.props.navigation.navigate('App');
+
       console.info(JSON.stringify(currentUser.user.toJSON()))
     } catch (e) {
       console.error(e);
@@ -55,7 +60,7 @@ class Login extends Component {
       <Container>
         <View style={styles.container}>
           <Image
-            source={require("../../../../assets/logo.png")}
+            source={require("../../../../assets/loading-screen.png")}
             style={styles.logo}
           />
           <TouchableOpacity onPress={this.facebookLogin} style={styles.button} primary>
@@ -72,7 +77,7 @@ class Login extends Component {
 
 const styles = StyleSheet.create({
   logo: {
-    height: 60,
+    height: 90,
     resizeMode: 'contain',
     justifyContent: 'center',
     alignItems: 'center'
@@ -81,22 +86,24 @@ const styles = StyleSheet.create({
     marginTop: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#6E4F94',
+    backgroundColor: 'white',
     borderRadius: 5,
   },
   buttonLabel: {
-    color: 'white',
+    color: '#6E4F94',
     padding: 14,
-    fontSize: 16,
+    fontSize: 12,
     fontWeight: 'bold',
   },
   buttonIcon: {
-    color: 'white'
+    color: '#6E4F94',
+    fontSize: 14,
   },
   container: { 
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#6E4F94'
   }
 })
 export default Login;

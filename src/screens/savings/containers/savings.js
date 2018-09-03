@@ -19,7 +19,7 @@ class Savings extends Component {
         />
         <Title padder>Detalles</Title>
         <MainList
-          data={this.props.userData}
+          data={this.props.balanceData}
           userDataLoaded={this.props.userDataLoaded}
         />
       </AppLayout>
@@ -28,10 +28,9 @@ class Savings extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state.AppReducer);
   return {
-    userData: state.AppReducer.userData,
-    userDataLoaded: state.AppReducer.userDataLoaded
+    balanceData: state.AppReducer.balanceData,
+    balanceDataLoaded: state.AppReducer.balanceDataLoaded
   };
 }
 

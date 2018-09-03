@@ -9,10 +9,10 @@ import { connect } from "react-redux";
 class Expenses extends Component {
   render() {
     var expensesList = []
-    for (i = 0; i < this.props.userData.length; i++) {
-      if (!this.props.userData[i].income) {
-        console.log(this.props.userData[i])
-        expensesList.push(this.props.userData[i]);
+    for (i = 0; i < this.props.balanceData.length; i++) {
+      if (!this.props.balanceData[i].income) {
+        console.log(this.props.balanceData[i])
+        expensesList.push(this.props.balanceData[i]);
       }
     }
     return (
@@ -26,7 +26,7 @@ class Expenses extends Component {
         <Title padder>Detalles</Title>
         <MainList
           data={expensesList}
-          userDataLoaded={this.props.userDataLoaded}
+          balanceDataLoaded={this.props.balanceDataLoaded}
         />
       </AppLayout>
     );
@@ -35,8 +35,8 @@ class Expenses extends Component {
 
 function mapStateToProps(state) {
   return {
-    userData: state.AppReducer.userData,
-    userDataLoaded: state.AppReducer.userDataLoaded
+    balanceData: state.AppReducer.balanceData,
+    balanceDataLoaded: state.AppReducer.balanceDataLoaded
   };
 }
 

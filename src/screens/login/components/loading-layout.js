@@ -22,7 +22,7 @@ function LoadingLayout(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'purple',
+    backgroundColor: '#6E4F94',
     alignItems: 'center',
     justifyContent: 'center',
   },

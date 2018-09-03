@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import { Title } from 'native-base';
-import MainCard from '../../../structure/components/main-card';
-import { View } from 'react-native';
-import AppLayout from '../../../structure/components/app-layout';
-import { connect } from 'react-redux';
-import MainList from '../../../structure/components/main-list';
+import React, { Component } from "react";
+import { Title } from "native-base";
+import MainCard from "../../../structure/components/main-card";
+import { View } from "react-native";
+import AppLayout from "../../../structure/components/app-layout";
+import { connect } from "react-redux";
+import MainList from "../../../structure/components/main-list";
 
 class Incomes extends Component {
   render() {
-    var expensesList = []
-    for (i = 0; i < this.props.userData.length; i++) {
-      if (this.props.userData[i].income) {
-        console.log(this.props.userData[i])
-        expensesList.push(this.props.userData[i]);
+    var expensesList = [];
+    for (i = 0; i < this.props.balanceData.length; i++) {
+      if (this.props.balanceData[i].income) {
+        console.log(this.props.balanceData[i]);
+        expensesList.push(this.props.balanceData[i]);
       }
     }
     return (
       <AppLayout>
-        <MainCard 
+        <MainCard
           initialColor="#A1BE4F"
           finalColor="#7B8947"
           title="Ingresos"
@@ -26,17 +26,17 @@ class Incomes extends Component {
         <Title padder>Detalles</Title>
         <MainList
           data={expensesList}
-          userDataLoaded={this.props.userDataLoaded}
+          balanceDataLoaded={this.props.balanceDataLoaded}
         />
       </AppLayout>
-    )
+    );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    userData: state.AppReducer.userData,
-    userDataLoaded: state.AppReducer.userDataLoaded
+    balanceData: state.AppReducer.balanceData,
+    balanceDataLoaded: state.AppReducer.balanceDataLoaded
   };
 }
 
