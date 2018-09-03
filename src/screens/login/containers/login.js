@@ -11,6 +11,8 @@ import {
   Text,
   Icon
 } from "native-base";
+import firebase from 'react-native-firebase';
+import { AccessToken, LoginManager } from 'react-native-fbsdk';
 
 class Login extends Component {
   handleLogin = () => {
