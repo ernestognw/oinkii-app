@@ -21,6 +21,35 @@ class Login extends Component {
     })
   }
 
+  facebookLogin = async () => {
+    try {
+      const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email']);
+  
+      if (result.isCancelled) {
+        throw new Error('User cancelled request'); // Handle this however fits the flow of your app
+      }
+  
+      console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
+  
+      // get the access token
+      const data = await AccessToken.getCurrentAccessToken();
+  
+      if (!data) {
+        throw new Error('Something went wrong obtaining the users access token'); // Handle this however fits the flow of your app
+      }
+  
+      // create a new firebase credential with the token
+      const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
+  
+      // login with credential
+      const currentUser = await firebase.auth().signInAndRetrieveDataWithCredential(credential);
+  
+      console.info(JSON.stringify(currentUser.user.toJSON()))
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   render() {
     return (
       <Container>
@@ -29,7 +58,7 @@ class Login extends Component {
             source={require("../../../../assets/logo.png")}
             style={styles.logo}
           />
-          <TouchableOpacity onPress={this.handleLogin} style={styles.button} primary>
+          <TouchableOpacity onPress={this.facebookLogin} style={styles.button} primary>
             <Text style={styles.buttonLabel}>
               <Icon style={styles.buttonIcon} type="EvilIcons" name="sc-facebook"/>
               Iniciar con Facebook
