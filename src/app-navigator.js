@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import {
   createStackNavigator,
-  createBottomTabNavigator
+  createBottomTabNavigator,
+  createSwitchNavigator,
 } from "react-navigation";
 import { Icon } from "native-base";
 import AppLayout from "./structure/components/app-layout";
@@ -13,6 +14,7 @@ import Book from "./screens/book/containers/book";
 import HeaderLayout from './structure/components/header-layout';
 import Login from './screens/login/containers/login';
 import Loading from "./screens/login/containers/loading";
+import IncomeModal from './screens/record-modal/container/income-modal';
 
 // const AppNavigator = createStackNavigator(
 //   {
@@ -92,19 +94,40 @@ const TabNavigator = createBottomTabNavigator(
   }
 );
 
-const SwitchNavigator = createStackNavigator(
+const SwitchNavigator = createSwitchNavigator(
   {
     App: TabNavigator,
     Login: Login,
     Loading: Loading,
   },
   {
-    initialRouteName: 'App',
-    headerMode: 'none',
-    cardStyle: {
-      backgroundColor: 'white',
-    }
+    initialRouteName: 'Login',
   }
 );
 
-export default SwitchNavigator;
+const ModalsNavigator = createStackNavigator(
+  {
+    SwitchNavigator: {
+      screen: SwitchNavigator,
+      headerMode: 'none',
+      navigationOptions: {
+        header: null,
+      }
+    },
+    Modals: {
+      screen: IncomeModal,
+      navigationOptions: {
+        title: 'Registra tu ingreso'
+      }
+    },
+  },
+  {
+    initialRouteName: 'SwitchNavigator',
+    mode: 'modal',
+    cardStyle: {
+      backgroundColor: 'white'
+    }
+  }
+)
+
+export default ModalsNavigator;

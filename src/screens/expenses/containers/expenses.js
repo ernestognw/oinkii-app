@@ -7,13 +7,24 @@ import MainList from "../../../structure/components/main-list";
 import { connect } from "react-redux";
 
 class Expenses extends Component {
+
+  buttons = [
+    {
+      icon: "circle-with-minus",
+      text: " GASTO",
+      buttonAction: this.addExpense
+    }
+  ]
+
   render() {
+
     var expensesList = []
     for (i = 0; i < this.props.balanceData.length; i++) {
       if (!this.props.balanceData[i].income) {
         expensesList.push(this.props.balanceData[i]);
       }
     }
+    
     return (
       <AppLayout>
         <MainCard 
@@ -21,6 +32,7 @@ class Expenses extends Component {
           finalColor="#821D52" 
           title="Gastos" 
           value="400" 
+          buttons={this.buttons}
         />
         <Title padder>Detalles</Title>
         <MainList

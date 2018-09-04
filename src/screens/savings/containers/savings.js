@@ -8,6 +8,29 @@ import AppLayout from "../../../structure/components/app-layout";
 import MainCard from '../../../structure/components/main-card';
 
 class Savings extends Component {
+  addIncome = () => {
+    this.props.navigation.navigate('Modals')
+  }
+
+  addExpense = () => {
+    console.log('Expense')
+  }
+
+  buttons = [
+    {
+      icon: "circle-with-minus",
+      text: " GASTO",
+      color: "red",
+      buttonAction: this.addExpense
+    },
+    {
+      icon: "circle-with-plus",
+      text: " INGRESO",
+      color: "green",
+      buttonAction: this.addIncome
+    },
+  ]
+
   render() {
     return (
       <AppLayout>
@@ -16,6 +39,7 @@ class Savings extends Component {
           finalColor="#402B60"
           title="Ahorros"
           value="900"
+          buttons={this.buttons}
         />
         <Title padder>Detalles</Title>
         <MainList

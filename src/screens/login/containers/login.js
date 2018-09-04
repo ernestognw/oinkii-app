@@ -16,22 +16,6 @@ import { AccessToken, LoginManager } from "react-native-fbsdk";
 import store from "../../../redux/store";
 
 class Login extends Component {
-  handleDatabase = () => {
-    firebase
-      .database()
-      .ref("nativeApp/data")
-      .set({
-        Data: 'data'
-      })
-      .then(data => {
-        //success callback
-        console.log("data ", data);
-      })
-      .catch(error => {
-        //error callback
-        console.log("error ", error);
-      });
-  };
 
   facebookLogin = async () => {
     try {
@@ -102,15 +86,6 @@ class Login extends Component {
                 name="sc-facebook"
               />
               Iniciar con Facebook
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={this.handleDatabase}
-            style={styles.button}
-            primary
-          >
-            <Text style={styles.buttonLabel}>
-              Probar
             </Text>
           </TouchableOpacity>
         </View>

@@ -1,9 +1,36 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
-import { Title, View, Button, Text } from "native-base";
+import { StyleSheet } from "react-native";
+import { Title, View, Text } from "native-base";
 import LinearGradient from "react-native-linear-gradient";
+import CardButtons from './card-buttons';
+import firebase from "react-native-firebase";
+import { AccessToken, LoginManager } from "react-native-fbsdk";
 
 function MainCard(props) {
+  addRecord = () => {
+    var date = Date.now();
+    firebase
+      .database()
+      .ref("nativeApp/Data")
+      .update({
+        date: {
+          quantity: "500",
+          description: "Ingreso con descripción de prueba",
+          income: true,
+          hour: "3:43 pm",
+          date: date
+        }
+      })
+      .then(data => {
+        //success callback
+        console.log("data ", data);
+      })
+      .catch(error => {
+        //error callback
+        console.log("error ", error);
+      });
+  };
+
   return (
     <View scrollEnabled={false} padder style={styles.mainView}>
       <LinearGradient
@@ -15,32 +42,19 @@ function MainCard(props) {
         <Title style={styles.buttonText}>{props.title}</Title>
         <View style={styles.numberContainer}>
           <Text style={styles.mainNumber}>${props.value}</Text>
-          <TouchableOpacity
-            onPress={() => console.log('hola mundo')}
-            style={styles.button}
-          >
-            <Text style={styles.buttonLabel}>
-              Agregar
-            </Text>
-          </TouchableOpacity>
         </View>
+        {
+          props.buttons ?
+          <CardButtons
+          buttons={props.buttons}
+          /> : null
+        } 
       </LinearGradient>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  button: {
-    justifyContent: "center",
-    borderRadius: 10,
-    borderColor: 'white',
-    borderWidth: 1,
-  },
-  buttonLabel: {
-    padding: 10,
-    color: 'white',
-    fontSize: 12,
-  },
   linearGradient: {
     flex: 1,
     borderRadius: 15,
@@ -54,7 +68,7 @@ const styles = StyleSheet.create({
       height: 5
     },
     shadowRadius: 8,
-    shadowOpacity: 0.3
+    shadowOpacity: 0.3,
   },
   buttonText: {
     fontSize: 18,

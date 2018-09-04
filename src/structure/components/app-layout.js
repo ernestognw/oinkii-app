@@ -1,5 +1,5 @@
 import React from "react";
-import { Content, Container } from "native-base";
+import { Content, Container, View } from "native-base";
 import HeaderLayout from './header-layout';
 
 function AppLayout (props) {
