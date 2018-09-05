@@ -14,7 +14,7 @@ import Book from "./screens/book/containers/book";
 import HeaderLayout from './structure/components/header-layout';
 import Login from './screens/login/containers/login';
 import Loading from "./screens/login/containers/loading";
-import IncomeModal from './screens/record-modal/container/income-modal';
+import recordModal from './screens/record-modal/container/record-modal';
 
 // const AppNavigator = createStackNavigator(
 //   {
@@ -101,7 +101,7 @@ const SwitchNavigator = createSwitchNavigator(
     Loading: Loading,
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'App',
   }
 );
 
@@ -109,15 +109,28 @@ const ModalsNavigator = createStackNavigator(
   {
     SwitchNavigator: {
       screen: SwitchNavigator,
-      headerMode: 'none',
       navigationOptions: {
         header: null,
       }
     },
-    Modals: {
-      screen: IncomeModal,
+    IncomeModal: {
+      screen: recordModal,
       navigationOptions: {
-        title: 'Registra tu ingreso'
+        title: 'Registra tu ingreso',
+        headerStyle: {
+          backgroundColor: '#A1BE4F',
+          height: 130,
+        }
+      }
+    },
+    ExpenseModal: {
+      screen: recordModal,
+      navigationOptions: {
+        title: 'Registra tu gasto',
+        headerStyle: {
+          backgroundColor: '#B73A77',
+          height: 130,
+        }
       }
     },
   },
@@ -125,7 +138,14 @@ const ModalsNavigator = createStackNavigator(
     initialRouteName: 'SwitchNavigator',
     mode: 'modal',
     cardStyle: {
-      backgroundColor: 'white'
+      backgroundColor: 'white',
+    },
+    navigationOptions : {
+      headerBackImage: <Icon name="close" style={{color: 'white', paddingLeft: 30}} type="MaterialIcons"/>,
+      headerTitleStyle: {
+        color: 'white',
+        fontSize: 22,
+      },
     }
   }
 )

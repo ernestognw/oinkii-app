@@ -9,11 +9,11 @@ import MainCard from '../../../structure/components/main-card';
 
 class Savings extends Component {
   addIncome = () => {
-    this.props.navigation.navigate('Modals')
+    this.props.navigation.navigate('IncomeModal')
   }
 
   addExpense = () => {
-    console.log('Expense')
+    this.props.navigation.navigate('ExpenseModal')
   }
 
   buttons = [

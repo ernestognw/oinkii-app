@@ -7,6 +7,9 @@ import MainList from "../../../structure/components/main-list";
 import { connect } from "react-redux";
 
 class Expenses extends Component {
+  addExpense = () => {
+    this.props.navigation.navigate('ExpenseModal')
+  }
 
   buttons = [
     {

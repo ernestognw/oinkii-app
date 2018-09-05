@@ -1,15 +1,39 @@
 import { createStore, applyMiddleware } from 'redux';
 import MainReducer from './reducers/main-reducer';
 import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const NavigationMiddleware = createReactNavigationReduxMiddleware(
   'root',
   state => state.nav
 )
 
+initialState = {
+  AppReducer: {
+    balanceData: [],
+    balanceDataLoaded: false,
+    incomeForm: {
+      description: "",
+      date: "",
+      hour: "",
+      quantity: "",
+      income: true,
+    },
+    expenseForm: {
+      description: "",
+      date: "",
+      hour: "",
+      quantity: "",
+      income: false,
+    }
+  }
+}
+
 const store = createStore(
-  MainReducer, 
-  applyMiddleware(NavigationMiddleware)
-)
+  MainReducer,
+  initialState, 
+  composeWithDevTools(
+    applyMiddleware(NavigationMiddleware)
+  ));
 
 export default store;

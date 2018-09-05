@@ -33,4 +33,10 @@ class App extends Component {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
 export default App;

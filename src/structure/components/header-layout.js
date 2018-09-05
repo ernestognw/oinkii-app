@@ -7,12 +7,12 @@ function HeaderLayout(props) {
   return (
     <Header>
       <Left>
-        <Button
+        {/* <Button
           transparent
           onPress={() => this.props.navigation.navigate("Expenses")}
         >
           <Icon name="menu" />
-        </Button>
+        </Button> */}
       </Left>
       <Body>
       <Image 

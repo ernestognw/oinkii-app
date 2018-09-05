@@ -7,6 +7,10 @@ import { connect } from "react-redux";
 import MainList from "../../../structure/components/main-list";
 
 class Incomes extends Component {
+  addIncome = () => {
+    this.props.navigation.navigate('IncomeModal')
+  }
+
   buttons = [
     {
       icon: "circle-with-plus",
