@@ -1,63 +1,42 @@
 import React from "react";
-import {
-  Container,
-  Text,
-  Form,
-  Item,
-  Label,
-  Input,
-  Icon
-} from "native-base";
+import { Container, Text, Form, Item, Label, Input, Icon } from "native-base";
 import { View, TouchableOpacity, StyleSheet } from "react-native";
+import ModalDatePicker from './modal-datepicker';
+import ModalHourpicker from './modal-hourpicker';
 
-function Expense(props) {
+function IncomeModal(props) {
   return (
     <Container>
       <Form>
-        <Item floatingLabel>
+        <Item>
           <Icon type="MaterialIcons" name="subject" style={styles.buttonIcon} />
-          <Label>Descripción</Label>
-          <Input 
+          <Input
+            placeholder="Descripción"
             onChangeText={props.handleFormChange.handleDescriptionChange}
             value={props.form.description}
           />
         </Item>
-        <Item floatingLabel>
-          <Icon
-            type="MaterialIcons"
-            name="date-range"
-            style={styles.buttonIcon}
-          />
-          <Label>Fecha</Label>
-          <Input 
-            onChangeText={props.handleFormChange.handleDateChange}
-            value={props.form.date}
-          />
-        </Item>
-        <Item floatingLabel>
-          <Icon
-            type="MaterialIcons"
-            name="timer"
-            style={styles.buttonIcon}
-          />
-          <Label>Hora</Label>
-          <Input 
-            onChangeText={props.handleFormChange.handleHourChange}
-            name="meta"
-            value={props.form.hour}
-          />
-        </Item>
-        <Item floatingLabel>
+        <ModalDatePicker
+          color="#B73A77"
+          handleFormChange={props.handleFormChange.handleDateChange}
+          date={props.form.date}
+        />
+        <ModalHourpicker 
+          color="#B73A77"
+          handleFormChange={props.handleFormChange.handleHourChange}
+          hour={props.form.hour}
+        />
+        <Item>
           <Icon
             type="MaterialIcons"
             name="attach-money"
             style={styles.buttonIcon}
           />
-          <Label>Cantidad</Label>
-          <Input 
+          <Input
+            placeholder="Cantidad"
             onChangeText={props.handleFormChange.handleQuantityChange}
             style={styles.numberInput}
-            keyboardType="number-pad" 
+            keyboardType="number-pad"
             value={props.form.quantity}
           />
         </Item>
@@ -91,12 +70,15 @@ const styles = StyleSheet.create({
   buttonIcon: {
     color: "#B73A77",
     marginBottom: 5,
-    fontSize: 20
+    fontSize: 20,
+    paddingRight: 8,
+    paddingTop: 8, 
+    top: 6,
   },
   numberInput: {
     fontSize: 30,
-    height: 80,
+    height: 80
   }
 });
 
-export default Expense;
+export default IncomeModal;
