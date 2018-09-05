@@ -3,34 +3,8 @@ import { StyleSheet } from "react-native";
 import { Title, View, Text } from "native-base";
 import LinearGradient from "react-native-linear-gradient";
 import CardButtons from './card-buttons';
-import firebase from "react-native-firebase";
-import { AccessToken, LoginManager } from "react-native-fbsdk";
 
 function MainCard(props) {
-  addRecord = () => {
-    var date = Date.now();
-    firebase
-      .database()
-      .ref("nativeApp/Data")
-      .update({
-        date: {
-          quantity: "500",
-          description: "Ingreso con descripción de prueba",
-          income: true,
-          hour: "3:43 pm",
-          date: date
-        }
-      })
-      .then(data => {
-        //success callback
-        console.log("data ", data);
-      })
-      .catch(error => {
-        //error callback
-        console.log("error ", error);
-      });
-  };
-
   return (
     <View scrollEnabled={false} padder style={styles.mainView}>
       <LinearGradient

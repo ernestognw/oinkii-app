@@ -11,7 +11,7 @@ const NavigationMiddleware = createReactNavigationReduxMiddleware(
 
 initialState = {
   AppReducer: {
-    balanceData: [],
+    balanceData: '',
     balanceDataLoaded: false,
     incomeForm: {
       description: "",

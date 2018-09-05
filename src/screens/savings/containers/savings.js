@@ -6,8 +6,26 @@ import { connect } from "react-redux";
 import HeaderLayout from "../../../structure/components/header-layout";
 import AppLayout from "../../../structure/components/app-layout";
 import MainCard from '../../../structure/components/main-card';
+import firebase from "react-native-firebase"; // Eliminar
+import store from '../../../redux/store';
 
 class Savings extends Component {
+  componentDidMount() {
+    firebase.database().ref('/nativeApp/t6enDM7jEvVBTvjihRVJUCogrhy1/balance').once('value').then(function(snapshot) {
+      var snap = snapshot.val();
+      console.log(snap)
+    });
+    firebase.database().ref('/nativeApp/t6enDM7jEvVBTvjihRVJUCogrhy1/balance').on('value', function(snapshot) {
+      var snap2 = snapshot.val();      
+      store.dispatch({
+        type: 'SET_BALANCE_DATA',
+        payload: {
+          balanceData: snap2,
+        }
+      })
+    });
+  }
+
   addIncome = () => {
     this.props.navigation.navigate('IncomeModal')
   }
@@ -44,7 +62,7 @@ class Savings extends Component {
         <Title padder>Detalles</Title>
         <MainList
           data={this.props.balanceData}
-          userDataLoaded={this.props.userDataLoaded}
+          userDataLoaded={this.props.balanceDataLoaded}
         />
       </AppLayout>
     );

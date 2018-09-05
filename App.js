@@ -11,15 +11,15 @@ import fakeApi from './src/redux/fake-api';
 class App extends Component {
   // FAKE API CALL JUST FOR EXAMPLE
   async componentDidMount(){
-    await setTimeout(() => {
-      console.log(fakeApi)
-      store.dispatch({
-        type: 'SET_BALANCE_DATA',
-        payload: {
-          balanceData: fakeApi
-        }
-      })
-    }, 2000)
+    // await setTimeout(() => {
+    //   console.log(fakeApi)
+    //   store.dispatch({
+    //     type: 'SET_BALANCE_DATA',
+    //     payload: {
+    //       balanceData: fakeApi
+    //     }
+    //   })
+    // }, 2000)
   }
 
   render() {

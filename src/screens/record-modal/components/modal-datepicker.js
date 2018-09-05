@@ -31,7 +31,8 @@ function ModalDatepicker(props) {
             paddingBottom: 7,
             paddingLeft: null,
             paddingRight: 5,
-            paddingTop: 3
+            paddingTop: 3,
+            marginLeft: 6,
           },
           placeholderText: {
             fontSize: 17,
@@ -39,7 +40,8 @@ function ModalDatepicker(props) {
             paddingBottom: 7,
             paddingLeft: null,
             paddingRight: 5,
-            paddingTop: 3
+            paddingTop: 3,
+            marginLeft: 6,
           }
           // ... You can check the source to find the other keys.
         }}

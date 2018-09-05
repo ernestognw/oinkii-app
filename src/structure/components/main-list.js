@@ -1,47 +1,34 @@
 import React, { Component } from "react";
-import { Icon, Right, Content, Left, List, ListItem, Body } from "native-base";
-import { Text, StyleSheet, View, FlatList, ActivityIndicator } from "react-native";
+import { Text, View, } from "react-native";
 import ListRecord from "./list-record";
+import EmptyList from './empty-list';
+import { List } from 'native-base';
 
 class MainList extends Component {
-  renderItem = ({ item }) => {
-    return <ListRecord {...item} />;
-  };
-
-  keyExtractor = (item, index) => index.toString();
-
-  renderEmpty = () => (
-    <View style={styles.emptyView}>
-    { 
-      !this.props.userDataLoaded ? 
-      <ActivityIndicator size="small" color="#65A4D2" /> :
-      <Text>Por ahora no tienes registros :(</Text>
-    }
-    </View>
-  );
-
   render() {
     return (
       <List>
-          <FlatList
-            keyExtractor={this.keyExtractor}
-            data={this.props.data}
-            ListEmptyComponent={this.renderEmpty}
-            renderItem={this.renderItem}
-          />
+          {
+            !this.props.data ?
+            <EmptyList 
+              loaded={this.props.userDataLoaded}
+            /> :
+            Object.keys(this.props.data).map((key, index) => {
+              return (
+              <ListRecord 
+                key={index}
+                quantity={this.props.data[key].quantity}
+                date={this.props.data[key].date}
+                hour={this.props.data[key].hour}
+                income={this.props.data[key].income}
+                description={this.props.data[key].description}
+              />
+              ) 
+            })
+          }
       </List>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 10
-  },
-  emptyView: {
-    marginTop: 40,
-    alignItems: "center",
-  }
-});
 
 export default MainList;

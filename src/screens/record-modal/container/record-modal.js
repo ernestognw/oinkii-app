@@ -10,7 +10,7 @@ import { Text } from 'react-native';
 class RecordModal extends Component {
 
   addIncome = () => {
-    this.props.actions.addIncome();
+    this.props.actions.addIncomeAsync(this.props.incomeForm, this.props.userID);
   }
 
   addExpense = () => {
@@ -57,6 +57,7 @@ class RecordModal extends Component {
       <IncomeModal 
         form={this.props.incomeForm}
         handleFormChange={this.handleIncomeInputChange}
+        addIncome={this.addIncome}
       /> :
       this.props.routeName == 'ExpenseModal' ?
       <ExpenseModal
@@ -76,6 +77,7 @@ function mapStateToProps (state) {
     routeName: state.nav.routes[1].routeName,
     incomeForm: state.AppReducer.incomeForm,
     expenseForm: state.AppReducer.expenseForm,
+    userID: 't6enDM7jEvVBTvjihRVJUCogrhy1' // Provisional UID
   }
 }
 
