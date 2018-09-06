@@ -5,16 +5,20 @@ import * as actions from "../../../actions/actions";
 import IncomeModal from "../components/income-modal";
 import ExpenseModal from '../components/expense-modal';
 import GoalsModal from "../components/goals-modal";
-import { Text } from 'react-native';
+import { Text, Alert } from 'react-native';
 
 class RecordModal extends Component {
 
   addIncome = () => {
-    this.props.actions.addIncomeAsync(this.props.incomeForm, this.props.userID);
+    this.props.actions.addRecordAsync(this.props.incomeForm, this.props.userID);
+    Alert.alert("Ingreso registrado ;)",'Tu ingreso ha sido registrado correctamente');    
+    this.props.navigation.navigate('SwitchNavigator');
   }
 
   addExpense = () => {
-    
+    this.props.actions.addRecordAsync(this.props.expenseForm, this.props.userID);
+    Alert.alert("Gasto registrado ;)", 'Tu gasto ha sido registrado correctamente');    
+    this.props.navigation.navigate('SwitchNavigator');
   }
 
   addGoal = () => {
@@ -63,6 +67,7 @@ class RecordModal extends Component {
       <ExpenseModal
         form={this.props.expenseForm}
         handleFormChange={this.handleExpenseInputChange}
+        addExpense={this.addExpense}
       /> :
       this.props.routeName == 'GoalModal' ?
       <GoalsModal /> : 
@@ -72,9 +77,8 @@ class RecordModal extends Component {
 }
 
 function mapStateToProps (state) {
-  console.log(state.nav.routes[1].routeName)
   return {
-    routeName: state.nav.routes[1].routeName,
+    routeName: state.nav.routes[1] ? state.nav.routes[1].routeName : '',
     incomeForm: state.AppReducer.incomeForm,
     expenseForm: state.AppReducer.expenseForm,
     userID: 't6enDM7jEvVBTvjihRVJUCogrhy1' // Provisional UID

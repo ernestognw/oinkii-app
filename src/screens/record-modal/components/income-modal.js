@@ -37,7 +37,7 @@ function IncomeModal(props) {
             placeholder="Cantidad"
             onChangeText={props.handleFormChange.handleQuantityChange}
             style={styles.numberInput}
-            keyboardType="number-pad"
+            keyboardType="numeric"
             value={props.form.quantity}
           />
         </Item>

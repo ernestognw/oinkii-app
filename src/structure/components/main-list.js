@@ -9,19 +9,19 @@ class MainList extends Component {
     return (
       <List>
           {
-            !this.props.data ?
+            !this.props.sortedBalanceIndex ?
             <EmptyList 
               loaded={this.props.userDataLoaded}
             /> :
-            Object.keys(this.props.data).map((key, index) => {
+            this.props.sortedBalanceIndex.map((key, index) => {
               return (
               <ListRecord 
                 key={index}
-                quantity={this.props.data[key].quantity}
-                date={this.props.data[key].date}
-                hour={this.props.data[key].hour}
-                income={this.props.data[key].income}
-                description={this.props.data[key].description}
+                quantity={this.props.data[key[0]].quantity}
+                date={this.props.data[key[0]].date}
+                hour={this.props.data[key[0]].hour}
+                income={this.props.data[key[0]].income}
+                description={this.props.data[key[0]].description}
               />
               ) 
             })

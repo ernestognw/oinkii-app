@@ -36,12 +36,12 @@ function IncomeModal(props) {
             placeholder="Cantidad"
             onChangeText={props.handleFormChange.handleQuantityChange}
             style={styles.numberInput}
-            keyboardType="number-pad"
+            keyboardType="numeric"
             value={props.form.quantity}
           />
         </Item>
         <View style={styles.container}>
-          <TouchableOpacity onPress={this.handleSubmit} style={styles.button}>
+          <TouchableOpacity onPress={props.addExpense} style={styles.button}>
             <Text style={styles.buttonLabel}>Enviar</Text>
           </TouchableOpacity>
         </View>

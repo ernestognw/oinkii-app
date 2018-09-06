@@ -4,7 +4,11 @@ function AppReducer (state = {}, action) {
       return {
         ...state,
         balanceData: action.payload.balanceData,
+        sortedBalanceIndex: action.payload.sortedBalanceIndex,
         balanceDataLoaded: true,
+        totalIncome: action.payload.totalIncome,
+        totalExpense: action.payload.totalExpense,
+        totalBalance: action.payload.totalBalance,
       }
     }
 
@@ -16,7 +20,6 @@ function AppReducer (state = {}, action) {
     }
 
     case 'CHANGE_MODAL_INPUT' : {
-      console.log(action.payload.type, action.payload.name)
       if(action.payload.type == 'income'){
         if(action.payload.name == 'description'){
           return {
@@ -89,7 +92,34 @@ function AppReducer (state = {}, action) {
           }
         }
       }
-    break;
+      break;
+
+    case 'CLEAN_FORM' : {
+      if(action.payload.isIncome == true){
+        return {
+          ...state,
+          incomeForm: {
+            description: "",
+            date: "",
+            hour: "",
+            quantity: "",
+            income: true,
+          },
+        }
+      } else if (action.payload.isIncome == false) {
+        return {
+          ...state,
+          expenseForm: {
+            description: "",
+            date: "",
+            hour: "",
+            quantity: "",
+            income: false,
+          },
+        }
+      }
+      break;
+    }
 
     default: 
       return state

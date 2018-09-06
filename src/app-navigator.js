@@ -116,7 +116,7 @@ const ModalsNavigator = createStackNavigator(
     IncomeModal: {
       screen: recordModal,
       navigationOptions: {
-        title: 'Registra tu ingreso',
+        title: 'Nuevo ingreso',
         headerStyle: {
           backgroundColor: '#A1BE4F',
           height: 130,
@@ -126,7 +126,7 @@ const ModalsNavigator = createStackNavigator(
     ExpenseModal: {
       screen: recordModal,
       navigationOptions: {
-        title: 'Registra tu gasto',
+        title: 'Nuevo gasto',
         headerStyle: {
           backgroundColor: '#B73A77',
           height: 130,

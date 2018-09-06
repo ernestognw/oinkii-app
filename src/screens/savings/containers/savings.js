@@ -6,23 +6,14 @@ import { connect } from "react-redux";
 import HeaderLayout from "../../../structure/components/header-layout";
 import AppLayout from "../../../structure/components/app-layout";
 import MainCard from '../../../structure/components/main-card';
-import firebase from "react-native-firebase"; // Eliminar
-import store from '../../../redux/store';
+import firebase from "react-native-firebase";
+import { bindActionCreators } from 'redux';
+import * as actions from '../../../actions/actions'
 
 class Savings extends Component {
   componentDidMount() {
-    firebase.database().ref('/nativeApp/t6enDM7jEvVBTvjihRVJUCogrhy1/balance').once('value').then(function(snapshot) {
-      var snap = snapshot.val();
-      console.log(snap)
-    });
-    firebase.database().ref('/nativeApp/t6enDM7jEvVBTvjihRVJUCogrhy1/balance').on('value', function(snapshot) {
-      var snap2 = snapshot.val();      
-      store.dispatch({
-        type: 'SET_BALANCE_DATA',
-        payload: {
-          balanceData: snap2,
-        }
-      })
+    firebase.database().ref('/nativeApp/t6enDM7jEvVBTvjihRVJUCogrhy1/balance').on('value', snapshot => {      
+      this.props.actions.setBalanceData(snapshot.val())
     });
   }
 
@@ -56,13 +47,14 @@ class Savings extends Component {
           initialColor="#6E4F94"
           finalColor="#402B60"
           title="Ahorros"
-          value="900"
+          value={this.props.totalBalance}
           buttons={this.buttons}
         />
         <Title padder>Detalles</Title>
         <MainList
           data={this.props.balanceData}
           userDataLoaded={this.props.balanceDataLoaded}
+          sortedBalanceIndex={this.props.sortedBalanceIndex}
         />
       </AppLayout>
     );
@@ -72,8 +64,17 @@ class Savings extends Component {
 function mapStateToProps(state) {
   return {
     balanceData: state.AppReducer.balanceData,
-    balanceDataLoaded: state.AppReducer.balanceDataLoaded
+    balanceDataLoaded: state.AppReducer.balanceDataLoaded,
+    sortedBalanceIndex: state.AppReducer.sortedBalanceIndex,
+    totalBalance: state.AppReducer.totalBalance,
   };
 }
 
-export default connect(mapStateToProps)(Savings);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Savings);
+  

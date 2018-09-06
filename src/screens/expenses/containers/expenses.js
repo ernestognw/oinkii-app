@@ -5,8 +5,17 @@ import { View } from "react-native";
 import AppLayout from "../../../structure/components/app-layout";
 import MainList from "../../../structure/components/main-list";
 import { connect } from "react-redux";
+import firebase from "react-native-firebase";
+import { bindActionCreators } from 'redux';
+import * as actions from '../../../actions/actions';
 
 class Expenses extends Component {
+  componentDidMount() {
+    firebase.database().ref('/nativeApp/t6enDM7jEvVBTvjihRVJUCogrhy1/balance').on('value', snapshot => {      
+      this.props.actions.setBalanceData(snapshot.val())
+    });
+  }
+
   addExpense = () => {
     this.props.navigation.navigate('ExpenseModal')
   }
@@ -21,10 +30,11 @@ class Expenses extends Component {
 
   render() {
 
-    var expensesList = []
-    for (i = 0; i < this.props.balanceData.length; i++) {
-      if (!this.props.balanceData[i].income) {
-        expensesList.push(this.props.balanceData[i]);
+    var sortedExpensesList = []
+
+    for (i = 0; i < this.props.sortedBalanceIndex.length; i++) {
+      if (!this.props.sortedBalanceIndex[i][2] == true) {
+        sortedExpensesList.push(this.props.sortedBalanceIndex[i]);
       }
     }
     
@@ -34,13 +44,14 @@ class Expenses extends Component {
           initialColor="#B73A77" 
           finalColor="#821D52" 
           title="Gastos" 
-          value="400" 
+          value={this.props.totalExpense} 
           buttons={this.buttons}
         />
         <Title padder>Detalles</Title>
         <MainList
-          data={expensesList}
+          data={this.props.balanceData}
           balanceDataLoaded={this.props.balanceDataLoaded}
+          sortedBalanceIndex={sortedExpensesList}
         />
       </AppLayout>
     );
@@ -50,8 +61,16 @@ class Expenses extends Component {
 function mapStateToProps(state) {
   return {
     balanceData: state.AppReducer.balanceData,
-    balanceDataLoaded: state.AppReducer.balanceDataLoaded
+    balanceDataLoaded: state.AppReducer.balanceDataLoaded,
+    sortedBalanceIndex: state.AppReducer.sortedBalanceIndex,
+    totalExpense: state.AppReducer.totalExpense,
   };
 }
 
-export default connect(mapStateToProps)(Expenses);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Expenses);
