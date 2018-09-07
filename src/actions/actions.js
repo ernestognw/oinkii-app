@@ -48,6 +48,12 @@ export function setBalanceData(balanceData) {
   }
 }
 
+export function bookLoaded() {
+  return {
+    type: "BOOK_LOADED"
+  } 
+}
+
 export function addRecordAsync(record, userID) {
   let id = Date.now();
   record.quantity = Number(record.quantity)

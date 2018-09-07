@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-view-pdf')
     compile project(':react-native-fbsdk')
     compile project(':react-native-firebase')
     compile project(':react-native-linear-gradient')

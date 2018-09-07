@@ -13,6 +13,7 @@ initialState = {
   AppReducer: {
     balanceData: '',
     sortedBalanceIndex: '',
+    bookLoaded: false,
     balanceDataLoaded: false,
     incomeForm: {
       description: "",

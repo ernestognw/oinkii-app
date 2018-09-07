@@ -8,6 +8,8 @@ import AppNavigatorWithState from './src/app-navigator-with-state';
 import AppNavigator from "./src/app-navigator";
 import fakeApi from './src/redux/fake-api';
 
+console.disableYellowBox = true;
+
 class App extends Component {
   // FAKE API CALL JUST FOR EXAMPLE
   async componentDidMount(){

@@ -19,6 +19,13 @@ function AppReducer (state = {}, action) {
       }
     }
 
+    case 'BOOK_LOADED' : {
+      return {
+        ...state,
+        bookLoaded: true,
+      }
+    }
+
     case 'CHANGE_MODAL_INPUT' : {
       if(action.payload.type == 'income'){
         if(action.payload.name == 'description'){

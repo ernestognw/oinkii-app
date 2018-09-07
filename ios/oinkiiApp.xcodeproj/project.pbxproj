@@ -46,6 +46,7 @@
 		4B450CFF9F9F4D29AE5B28F1 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C7E89CA1CCA44BC9ACCC823 /* libRCTFBSDK.a */; };
 		56D04D5E937C4ED39FB01284 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A84C682162D4C5294EA306D /* Ionicons.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		6BD59176214213E90085683B /* edu-fin.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6BD59175214213E90085683B /* edu-fin.pdf */; };
 		6BFE24C3213CC37B00D210CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BFE249B213CC37B00D210CE /* GoogleService-Info.plist */; };
 		6BFE24C4213CC37B00D210CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BFE249B213CC37B00D210CE /* GoogleService-Info.plist */; };
 		6BFE24C5213CC37B00D210CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BFE249B213CC37B00D210CE /* GoogleService-Info.plist */; };
@@ -60,6 +61,7 @@
 		C0BDCC25DDF949C3AFCD26EB /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1F992FD5CC429B9F34F949 /* libRNFirebase.a */; };
 		C1EA2E3D26D34327B215964D /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A2E9DB2575F4AC9B26E88CC /* Entypo.ttf */; };
 		D4A543BF7B1E2CC0CAEBCA1F /* libPods-oinkiiApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6C243303E56B969503C968 /* libPods-oinkiiApp.a */; };
+		E1415431981F4840A46C5454 /* libReactNativeViewPDF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD68F5E35FAF46E4A6F225CE /* libReactNativeViewPDF.a */; };
 		E2776E57C81D45A7932CF95A /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B4B39376E29E471E825F17A5 /* Roboto.ttf */; };
 		F3773F484C384656BBA9BA46 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D2CB6A335DD42DE8AB5BAAF /* MaterialCommunityIcons.ttf */; };
 /* End PBXBuildFile section */
@@ -331,6 +333,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNFirebase;
 		};
+		6BD59173214213D90085683B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F6F7F03D31F40D5BEEF34BF /* ReactNativeViewPDF.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5318AA072052B7FC009FB5F2;
+			remoteInfo = ReactNativeViewPDF;
+		};
 		6BFE248A213CC14B00D210CE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA30C0A691AE4AA4AD22EA43 /* BVLinearGradient.xcodeproj */;
@@ -398,11 +407,13 @@
 		4161825D2D424DEAA4DF495F /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/native-base/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		4A8DE63DEE694EC58BF3B22E /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
 		4B56B97FEEC94F449B438E0E /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		4F6F7F03D31F40D5BEEF34BF /* ReactNativeViewPDF.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeViewPDF.xcodeproj; path = "../node_modules/react-native-view-pdf/ReactNativeViewPDF.xcodeproj"; sourceTree = "<group>"; };
 		5566511B2374465B8C2B63AE /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		55B0E776F9F61C38E3DDE03D /* Pods-oinkiiApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oinkiiApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-oinkiiApp/Pods-oinkiiApp.release.xcconfig"; sourceTree = "<group>"; };
 		55F31304B30F42BBA0E05346 /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6A84C682162D4C5294EA306D /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		6BD59175214213E90085683B /* edu-fin.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "edu-fin.pdf"; sourceTree = "<group>"; };
 		6BFE249B213CC37B00D210CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6C7E89CA1CCA44BC9ACCC823 /* libRCTFBSDK.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTFBSDK.a; sourceTree = "<group>"; };
 		73F738AF8F0C4B36A023D811 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
@@ -420,6 +431,7 @@
 		B4B39376E29E471E825F17A5 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		B9F6558BA6E42D55FB2AD138 /* Pods-oinkiiAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oinkiiAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-oinkiiAppTests/Pods-oinkiiAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA7F1FE58AB246B587946A15 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		BD68F5E35FAF46E4A6F225CE /* libReactNativeViewPDF.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeViewPDF.a; sourceTree = "<group>"; };
 		D230F236B13288838D8CDD10 /* Pods-oinkiiAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oinkiiAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-oinkiiAppTests/Pods-oinkiiAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		DA68C4293902C789D2F7BF12 /* Pods-oinkiiApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oinkiiApp-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-oinkiiApp-tvOSTests/Pods-oinkiiApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EE6C243303E56B969503C968 /* libPods-oinkiiApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-oinkiiApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -458,6 +470,7 @@
 				D4A543BF7B1E2CC0CAEBCA1F /* libPods-oinkiiApp.a in Frameworks */,
 				C0BDCC25DDF949C3AFCD26EB /* libRNFirebase.a in Frameworks */,
 				4B450CFF9F9F4D29AE5B28F1 /* libRCTFBSDK.a in Frameworks */,
+				E1415431981F4840A46C5454 /* libReactNativeViewPDF.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,6 +583,7 @@
 		13B07FAE1A68108700A75B9A /* oinkiiApp */ = {
 			isa = PBXGroup;
 			children = (
+				6BD59175214213E90085683B /* edu-fin.pdf */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -675,12 +689,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6BD59170214213D90085683B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6BD59174214213D90085683B /* libReactNativeViewPDF.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		6BFE2460213CC14000D210CE /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
 				55F31304B30F42BBA0E05346 /* libBVLinearGradient.a */,
 				3C1F992FD5CC429B9F34F949 /* libRNFirebase.a */,
 				6C7E89CA1CCA44BC9ACCC823 /* libRCTFBSDK.a */,
+				BD68F5E35FAF46E4A6F225CE /* libReactNativeViewPDF.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -721,6 +744,7 @@
 				AA30C0A691AE4AA4AD22EA43 /* BVLinearGradient.xcodeproj */,
 				0D8AB9DDB62E49B681123FA2 /* RNFirebase.xcodeproj */,
 				4A8DE63DEE694EC58BF3B22E /* RCTFBSDK.xcodeproj */,
+				4F6F7F03D31F40D5BEEF34BF /* ReactNativeViewPDF.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -945,6 +969,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = 6BD59170214213D90085683B /* Products */;
+					ProjectRef = 4F6F7F03D31F40D5BEEF34BF /* ReactNativeViewPDF.xcodeproj */;
 				},
 				{
 					ProductGroup = 6B3A4193213CE0840006B620 /* Products */;
@@ -1214,6 +1242,13 @@
 			remoteRef = 6B3A4196213CE08A0006B620 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		6BD59174214213D90085683B /* libReactNativeViewPDF.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReactNativeViewPDF.a;
+			remoteRef = 6BD59173214213D90085683B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		6BFE248B213CC14B00D210CE /* libBVLinearGradient.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1281,6 +1316,7 @@
 				7B537235BB1B49A5BC8C1CAD /* rubicon-icon-font.ttf in Resources */,
 				85C9D85C40274F3CA30CDEC0 /* SimpleLineIcons.ttf in Resources */,
 				03293675184C4B988A64AF23 /* Zocial.ttf in Resources */,
+				6BD59176214213E90085683B /* edu-fin.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1484,12 +1520,14 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-view-pdf/ReactNativeViewPDF",
 				);
 				INFOPLIST_FILE = oinkiiAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1515,12 +1553,14 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-view-pdf/ReactNativeViewPDF",
 				);
 				INFOPLIST_FILE = oinkiiAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1547,6 +1587,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-view-pdf/ReactNativeViewPDF",
 				);
 				INFOPLIST_FILE = oinkiiApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1572,6 +1613,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-view-pdf/ReactNativeViewPDF",
 				);
 				INFOPLIST_FILE = oinkiiApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1602,11 +1644,13 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-view-pdf/ReactNativeViewPDF",
 				);
 				INFOPLIST_FILE = "oinkiiApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1640,11 +1684,13 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-view-pdf/ReactNativeViewPDF",
 				);
 				INFOPLIST_FILE = "oinkiiApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1678,11 +1724,13 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-view-pdf/ReactNativeViewPDF",
 				);
 				INFOPLIST_FILE = "oinkiiApp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1716,11 +1764,13 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-view-pdf/ReactNativeViewPDF",
 				);
 				INFOPLIST_FILE = "oinkiiApp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
