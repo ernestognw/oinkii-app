@@ -1,20 +1,15 @@
 import React, { Component } from "react";
 import { Title } from "native-base";
-import MainCard from "../../../structure/components/main-card";
+import MainCard from "../../savings/components/main-card";
 import { View } from "react-native";
 import AppLayout from "../../../structure/components/app-layout";
-import MainList from "../../../structure/components/main-list";
+import MainList from "../../savings/components/main-list";
 import { connect } from "react-redux";
 import firebase from "react-native-firebase";
 import { bindActionCreators } from 'redux';
 import * as actions from '../../../actions/actions';
 
 class Expenses extends Component {
-  componentDidMount() {
-    firebase.database().ref('/nativeApp/t6enDM7jEvVBTvjihRVJUCogrhy1/balance').on('value', snapshot => {      
-      this.props.actions.setBalanceData(snapshot.val())
-    });
-  }
 
   addExpense = () => {
     this.props.navigation.navigate('ExpenseModal')

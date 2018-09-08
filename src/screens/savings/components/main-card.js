@@ -38,8 +38,8 @@ function MainCard(props) {
 const styles = StyleSheet.create({
   linearGradient: {
     flex: 1,
-    borderRadius: 15,
-    marginBottom: 20
+    borderRadius: 10,
+    marginBottom: 15,
   },
   mainView: {
     height: 200,

@@ -17,7 +17,7 @@ class RecordModal extends Component {
 
   addExpense = () => {
     this.props.actions.addRecordAsync(this.props.expenseForm, this.props.userID);
-    Alert.alert("Gasto registrado ;)", 'Tu gasto ha sido registrado correctamente');    
+    Alert.alert("Gasto registrado ;)", 'Tu gasto ha sido registrado correctamente'); 
     this.props.navigation.navigate('SwitchNavigator');
   }
 
@@ -62,7 +62,7 @@ class RecordModal extends Component {
         form={this.props.incomeForm}
         handleFormChange={this.handleIncomeInputChange}
         addIncome={this.addIncome}
-      /> :
+      /> :  
       this.props.routeName == 'ExpenseModal' ?
       <ExpenseModal
         form={this.props.expenseForm}

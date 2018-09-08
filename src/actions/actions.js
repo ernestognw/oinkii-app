@@ -72,6 +72,20 @@ export function addRecordAsync(record, userID) {
   }
 }
 
+export function deleteRecord(recordID, userID) {
+  return (dispatch) => {firebase.database().ref("nativeApp/"+ userID + "/balance/" + recordID)
+    .remove()
+    .then(data => {
+      alert('Elemento borrado');
+      console.log(data)
+      dispatch(cleanForm(true))
+    })
+    .catch(error => {
+      alert('Ha ocurrido un error en el registro');
+      console.log("error ", error);
+    });
+  }
+}
 
 // Functions called by other ASYNC functions
 

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Title, View, Container, Content } from "native-base";
 import { Text } from "react-native";
-import MainList from "../../../structure/components/main-list";
 import { connect } from "react-redux";
 import HeaderLayout from "../../../structure/components/header-layout";
 import AppLayout from "../../../structure/components/app-layout";
-import MainCard from '../../../structure/components/main-card';
 import firebase from "react-native-firebase";
 import { bindActionCreators } from 'redux';
 import * as actions from '../../../actions/actions'
+import MainList from '../components/main-list';
+import MainCard from '../components/main-card';
 
 class Savings extends Component {
   componentDidMount() {

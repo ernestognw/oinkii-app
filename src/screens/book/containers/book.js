@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Title } from "native-base";
-import MainCard from "../../../structure/components/main-card";
-import { View, Platform, ActivityIndicator, StyleSheet, Text } from "react-native";
+import MainCard from "../../savings/components/main-card";
+import { View, Platform, ActivityIndicator, StyleSheet } from "react-native";
 import AppLayout from "../../../structure/components/app-layout";
 import PDFView from "react-native-view-pdf";
 import HeaderLayout from '../../../structure/components/header-layout';
