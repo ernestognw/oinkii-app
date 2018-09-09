@@ -44,6 +44,7 @@ class Expenses extends Component {
         />
         <Title padder>Detalles</Title>
         <MainList
+          navigation={this.props.navigation}
           data={this.props.balanceData}
           balanceDataLoaded={this.props.balanceDataLoaded}
           sortedBalanceIndex={sortedExpensesList}

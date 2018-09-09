@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Alert } from "react-native";
 import ListRecord from "./list-record";
 import EmptyList from "./empty-list";
 import { List, Button, Icon, SwipeRow } from "native-base";
@@ -14,9 +14,18 @@ class MainList extends Component {
     this.selectedRow;
   }
 
-  deleteRecord = (recordID, closePosition) => {
-    this.component[closePosition]._root.closeWindow()
+  deleteRecord = (recordID) => {
+    this.selectedRow._root.closeWindow();
     this.props.actions.deleteRecord(recordID, "t6enDM7jEvVBTvjihRVJUCogrhy1");
+    Alert.alert("Elemento eliminado", 'El registro se eliminó exitosamente'); 
+  }
+
+  openEditModal = (isIncome, recordID) => {
+    isIncome ?
+    this.props.navigation.navigate('EditIncomeModal') :
+    this.props.navigation.navigate('EditExpenseModal')
+    this.props.actions.openEditModal(recordID);
+    this.selectedRow._root.closeWindow();
   }
 
   render() {
@@ -37,7 +46,7 @@ class MainList extends Component {
                   this.selectedRow = this.component[index]
                 }}
                 left={
-                  <Button info onPress={() => alert("Add")}>
+                  <Button info onPress={() => this.openEditModal(this.props.data[key[0]].income, this.props.data[key[0]].id)}>
                     <Icon active type="MaterialIcons" name="edit" />
                   </Button>
                 }
@@ -51,7 +60,7 @@ class MainList extends Component {
                   />
                 }
                 right={
-                  <Button danger onPress={() => {this.deleteRecord(this.props.data[key[0]].id, index)}}>
+                  <Button danger onPress={() => {this.deleteRecord(this.props.data[key[0]].id)}}>
                     <Icon active type="MaterialIcons" name="close" />
                   </Button>
                 }

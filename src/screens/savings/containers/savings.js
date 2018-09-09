@@ -46,12 +46,13 @@ class Savings extends Component {
         <MainCard
           initialColor="#6E4F94"
           finalColor="#402B60"
-          title="Ahorros"
+          title="Mi Dinero"
           value={this.props.totalBalance}
           buttons={this.buttons}
         />
         <Title padder>Detalles</Title>
         <MainList
+          navigation={this.props.navigation}
           data={this.props.balanceData}
           userDataLoaded={this.props.balanceDataLoaded}
           sortedBalanceIndex={this.props.sortedBalanceIndex}

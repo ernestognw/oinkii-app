@@ -1,12 +1,31 @@
 import firebase from "react-native-firebase";
 
-export function handleModalInputChange(value, type, name) {
+export function handleIncomeModalInputChange(value, name) {
   return {
-    type: "CHANGE_MODAL_INPUT",
+    type: "CHANGE_INCOME_MODAL_INPUT",
     payload: {
-      value: value,
-      type: type,
-      name: name
+      value,
+      name,
+    }
+  };
+}
+
+export function handleExpenseModalInputChange(value, name) {
+  return {
+    type: "CHANGE_EXPENSE_MODAL_INPUT",
+    payload: {
+      value,
+      name,
+    }
+  };
+}
+
+export function handleEditModalInputChange(value, name) {
+  return {
+    type: "CHANGE_EDIT_MODAL_INPUT",
+    payload: {
+      value,
+      name,
     }
   };
 }
@@ -76,14 +95,35 @@ export function deleteRecord(recordID, userID) {
   return (dispatch) => {firebase.database().ref("nativeApp/"+ userID + "/balance/" + recordID)
     .remove()
     .then(data => {
-      alert('Elemento borrado');
-      console.log(data)
-      dispatch(cleanForm(true))
+      null
     })
     .catch(error => {
       alert('Ha ocurrido un error en el registro');
       console.log("error ", error);
     });
+  }
+}
+
+export function editRecord(editForm, userID) {
+  editForm.quantity = Number(editForm.quantity)
+  return (dispatch) => {firebase.database().ref("nativeApp/"+ userID + "/balance/" + editForm.id)
+    .update(editForm)
+    .then(data => {
+      null
+    })
+    .catch(error => {
+      alert('Ha ocurrido un error al editar');
+      console.log("error ", error);
+    });
+  }
+}
+
+export function openEditModal(recordID){
+  return {
+    type: 'OPEN_EDIT_MODAL',
+    payload: {
+      recordID
+    }
   }
 }
 

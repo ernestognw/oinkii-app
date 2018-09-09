@@ -12,18 +12,18 @@ function IncomeModal(props) {
           <Icon type="MaterialIcons" name="subject" style={styles.buttonIcon} />
           <Input
             placeholder="Descripción"
-            onChangeText={props.handleFormChange.handleDescriptionChange}
+            onChangeText={value => props.handleInputChange(value, "description")}
             value={props.form.description}
           />
         </Item>
         <ModalDatePicker
           color="#B73A77"
-          handleFormChange={props.handleFormChange.handleDateChange}
+          handleFormChange={value => props.handleInputChange(value, "date")}
           date={props.form.date}
         />
         <ModalHourpicker 
           color="#B73A77"
-          handleFormChange={props.handleFormChange.handleHourChange}
+          handleFormChange={value => props.handleInputChange(value, "hour")}
           hour={props.form.hour}
         />
         <Item>
@@ -34,7 +34,7 @@ function IncomeModal(props) {
           />
           <Input
             placeholder="Cantidad"
-            onChangeText={props.handleFormChange.handleQuantityChange}
+            onChangeText={value => props.handleInputChange(value, "quantity")}
             style={styles.numberInput}
             keyboardType="numeric"
             value={props.form.quantity}

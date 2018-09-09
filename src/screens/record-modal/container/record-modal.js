@@ -21,38 +21,26 @@ class RecordModal extends Component {
     this.props.navigation.navigate('SwitchNavigator');
   }
 
+  editRecord = () => {
+    this.props.actions.editRecord(this.props.editForm, this.props.userID);
+    Alert.alert("Editado correctamente", 'Tu registro se ha editado correctamente'); 
+    this.props.navigation.navigate('SwitchNavigator');
+  }
+
   addGoal = () => {
     // Pending...
   }
 
-  handleIncomeInputChange = {
-    handleDescriptionChange: value => {
-      this.props.actions.handleModalInputChange(value, 'income', 'description')
-    },
-    handleDateChange: value => {
-      this.props.actions.handleModalInputChange(value, 'income', 'date')
-    },
-    handleHourChange: value => {
-      this.props.actions.handleModalInputChange(value, 'income', 'hour')      
-    },
-    handleQuantityChange: value => {
-      this.props.actions.handleModalInputChange(value, 'income', 'quantity')
-    },
+  handleIncomeInputChange = (value, name) => {
+    this.props.actions.handleIncomeModalInputChange(value, name)
   }
 
-  handleExpenseInputChange = {
-    handleDescriptionChange: value => {
-      this.props.actions.handleModalInputChange(value, 'expense', 'description')
-    },
-    handleDateChange: value => {
-      this.props.actions.handleModalInputChange(value, 'expense', 'date')
-    },
-    handleHourChange: value => {
-      this.props.actions.handleModalInputChange(value, 'expense', 'hour')      
-    },
-    handleQuantityChange: value => {
-      this.props.actions.handleModalInputChange(value, 'expense', 'quantity')
-    },
+  handleExpenseInputChange = (value, name) => {
+    this.props.actions.handleExpenseModalInputChange(value, name)
+  }
+
+  handleEditInputChange = (value, name) => {
+    this.props.actions.handleEditModalInputChange(value, name)
   }
 
   render(){
@@ -60,18 +48,30 @@ class RecordModal extends Component {
       this.props.routeName == 'IncomeModal' ?
       <IncomeModal 
         form={this.props.incomeForm}
-        handleFormChange={this.handleIncomeInputChange}
+        handleInputChange={this.handleIncomeInputChange}
         addIncome={this.addIncome}
       /> :  
       this.props.routeName == 'ExpenseModal' ?
       <ExpenseModal
         form={this.props.expenseForm}
-        handleFormChange={this.handleExpenseInputChange}
+        handleInputChange={this.handleExpenseInputChange}
         addExpense={this.addExpense}
+      /> :
+      this.props.routeName == 'EditIncomeModal' ?
+      <IncomeModal
+        form={this.props.editForm}
+        handleInputChange={this.handleEditInputChange}
+        addExpense={this.editRecord}
+      /> :
+      this.props.routeName == 'EditExpenseModal' ?
+      <ExpenseModal
+        form={this.props.editForm}
+        handleInputChange={this.handleEditInputChange}
+        addExpense={this.editRecord}
       /> :
       this.props.routeName == 'GoalModal' ?
       <GoalsModal /> : 
-      <Text>Loading...</Text>
+      null
   );
   }
 }
@@ -81,6 +81,7 @@ function mapStateToProps (state) {
     routeName: state.nav.routes[1] ? state.nav.routes[1].routeName : '',
     incomeForm: state.AppReducer.incomeForm,
     expenseForm: state.AppReducer.expenseForm,
+    editForm: state.AppReducer.editForm,
     userID: 't6enDM7jEvVBTvjihRVJUCogrhy1' // Provisional UID
   }
 }

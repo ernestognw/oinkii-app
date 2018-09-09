@@ -16,23 +16,6 @@ import Login from './screens/login/containers/login';
 import Loading from "./screens/login/containers/loading";
 import recordModal from './screens/record-modal/container/record-modal';
 
-// const AppNavigator = createStackNavigator(
-//   {
-//     Home: {
-//       screen: TabNavigator
-//     }
-//   },
-//   {
-//     initialRouteName: 'Home',
-//     cardStyle: {
-//       backgroundColor: 'white',
-//     },
-//     navigationOptions: {
-//       header: HeaderLayout
-//     }
-//   }
-// )
-
 const TabNavigator = createBottomTabNavigator(
   {
     Incomes: {
@@ -56,7 +39,7 @@ const TabNavigator = createBottomTabNavigator(
     Savings: {
       screen: Savings,
       navigationOptions: {
-        title: "Ahorro",
+        title: "Mi Dinero",
         tabBarIcon: props => (
           <Icon name="wallet" style={{ color: props.tintColor }} />
         )
@@ -123,10 +106,30 @@ const ModalsNavigator = createStackNavigator(
         }
       }
     },
+    EditIncomeModal: {
+      screen: recordModal,
+      navigationOptions: {
+        title: 'Editar ingreso',
+        headerStyle: {
+          backgroundColor: '#A1BE4F',
+          height: 130,
+        }
+      }
+    },
     ExpenseModal: {
       screen: recordModal,
       navigationOptions: {
         title: 'Nuevo gasto',
+        headerStyle: {
+          backgroundColor: '#B73A77',
+          height: 130,
+        }
+      }
+    },
+    EditExpenseModal: {
+      screen: recordModal,
+      navigationOptions: {
+        title: 'Editar gasto',
         headerStyle: {
           backgroundColor: '#B73A77',
           height: 130,

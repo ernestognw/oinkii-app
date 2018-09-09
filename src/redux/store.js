@@ -28,6 +28,15 @@ initialState = {
       hour: "",
       quantity: "",
       income: false,
+    },
+    editForm: {
+      description: "",
+      date: "",
+      hour: "",
+      quantity: "",
+      income: false,
+      time: "",
+      id: "",
     }
   }
 }
