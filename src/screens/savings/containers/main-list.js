@@ -46,8 +46,8 @@ class MainList extends Component {
                   this.selectedRow = this.component[index]
                 }}
                 left={
-                  <Button info onPress={() => this.openEditModal(this.props.data[key[0]].income, this.props.data[key[0]].id)}>
-                    <Icon active type="MaterialIcons" name="edit" />
+                  <Button danger onPress={() => {this.deleteRecord(this.props.data[key[0]].id)}}>
+                    <Icon active type="MaterialIcons" name="close" />
                   </Button>
                 }
                 body={
@@ -60,8 +60,8 @@ class MainList extends Component {
                   />
                 }
                 right={
-                  <Button danger onPress={() => {this.deleteRecord(this.props.data[key[0]].id)}}>
-                    <Icon active type="MaterialIcons" name="close" />
+                  <Button info onPress={() => this.openEditModal(this.props.data[key[0]].income, this.props.data[key[0]].id)}>
+                    <Icon active type="MaterialIcons" name="edit" />
                   </Button>
                 }
               />

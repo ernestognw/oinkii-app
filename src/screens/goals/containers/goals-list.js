@@ -40,14 +40,14 @@ class GoalsList extends Component {
                 ref={(c) => {this.component[index] = c }}
                 key={index}
                 leftOpenValue={75}
-                rightOpenValue={-75}
+                rightOpenValue={-110}
                 onRowOpen={() => {
                   if (this.selectedRow && this.selectedRow !== this.component[index]) { this.selectedRow._root.closeRow(); }
                   this.selectedRow = this.component[index]
                 }}
                 left={
-                  <Button info onPress={() => alert('Open Left')}>
-                    <Icon active type="MaterialIcons" name="edit" />
+                  <Button danger onPress={() => {alert('Open Right 1')}}>
+                    <Icon active type="MaterialIcons" name="close" />
                   </Button>
                 }
                 body={
@@ -56,12 +56,18 @@ class GoalsList extends Component {
                     description={this.props.data[key[0]].description}
                     dateToAccomplish={this.props.data[key[0]].dateToAccomplish}
                     totalBalance={this.props.totalBalance}
+                    timeToAccomplish={this.props.data[key[0]].timeToAccomplish}
                   />
                 }
                 right={
-                  <Button danger onPress={() => {alert('Open Right')}}>
-                    <Icon active type="MaterialIcons" name="close" />
-                  </Button>
+                    <View style={styles.doubleButtonView}>
+                      <Button info style={styles.doubleButton} onPress={() => alert('Open Left')}>
+                        <Icon active type="MaterialIcons" name="edit" />
+                      </Button>
+                      <Button success style={styles.doubleButton} onPress={() => {alert('Open Right 2')}}>
+                        <Icon active type="MaterialIcons" name="check" />
+                      </Button>
+                    </View>
                 }
               />
             );
@@ -71,6 +77,17 @@ class GoalsList extends Component {
     );
   }
 }
+
+styles = StyleSheet.create({
+  doubleButtonView: {
+    flex: 1,
+    flexDirection: "row"
+  },
+  doubleButton: {
+    flex: 1,
+    height: "100%"
+  }
+})
 
 function mapDispatchToProps(dispatch) {
   return {

@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   date: {
-    marginTop: 7,
     fontSize: 10,
   },
   hour: {
@@ -56,7 +55,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
     paddingBottom: 0,
     paddingRight: 0,
-    paddingTop: 0
+    paddingTop: 0,
+    justifyContent: 'center',
   },
   mainView: {
     flex: 1
