@@ -49,25 +49,25 @@ class RecordModal extends Component {
       <IncomeModal 
         form={this.props.incomeForm}
         handleInputChange={this.handleIncomeInputChange}
-        addIncome={this.addIncome}
+        buttonAction={this.addIncome}
       /> :  
       this.props.routeName == 'ExpenseModal' ?
       <ExpenseModal
         form={this.props.expenseForm}
         handleInputChange={this.handleExpenseInputChange}
-        addExpense={this.addExpense}
+        buttonAction={this.addExpense}
       /> :
       this.props.routeName == 'EditIncomeModal' ?
       <IncomeModal
         form={this.props.editForm}
         handleInputChange={this.handleEditInputChange}
-        addExpense={this.editRecord}
+        buttonAction={this.editRecord}
       /> :
       this.props.routeName == 'EditExpenseModal' ?
       <ExpenseModal
         form={this.props.editForm}
         handleInputChange={this.handleEditInputChange}
-        addExpense={this.editRecord}
+        buttonAction={this.editRecord}
       /> :
       this.props.routeName == 'GoalModal' ?
       <GoalsModal /> : 
@@ -82,7 +82,7 @@ function mapStateToProps (state) {
     incomeForm: state.AppReducer.incomeForm,
     expenseForm: state.AppReducer.expenseForm,
     editForm: state.AppReducer.editForm,
-    userID: 't6enDM7jEvVBTvjihRVJUCogrhy1' // Provisional UID
+    userID: state.AppReducer.userData.uid
   }
 }
 

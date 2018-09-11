@@ -65,7 +65,6 @@ function AppReducer(state = {}, action) {
     }
 
     case "CHANGE_EDIT_MODAL_INPUT" : {
-      console.log('reached')
       switch (action.payload.name){
         case "description": {
           return {...state, editForm: {...state.editForm, description: action.payload.value}};

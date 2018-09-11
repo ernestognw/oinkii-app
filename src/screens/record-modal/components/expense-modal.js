@@ -41,7 +41,7 @@ function IncomeModal(props) {
           />
         </Item>
         <View style={styles.container}>
-          <TouchableOpacity onPress={props.addExpense} style={styles.button}>
+          <TouchableOpacity onPress={props.buttonAction} style={styles.button}>
             <Text style={styles.buttonLabel}>Enviar</Text>
           </TouchableOpacity>
         </View>

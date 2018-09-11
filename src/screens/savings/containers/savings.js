@@ -12,7 +12,7 @@ import MainCard from '../components/main-card';
 
 class Savings extends Component {
   componentDidMount() {
-    firebase.database().ref('/nativeApp/t6enDM7jEvVBTvjihRVJUCogrhy1/balance').on('value', snapshot => {      
+    firebase.database().ref('/nativeApp/' + this.props.userID + '/balance').on('value', snapshot => {      
       this.props.actions.setBalanceData(snapshot.val())
     });
   }
@@ -68,6 +68,7 @@ function mapStateToProps(state) {
     balanceDataLoaded: state.AppReducer.balanceDataLoaded,
     sortedBalanceIndex: state.AppReducer.sortedBalanceIndex,
     totalBalance: state.AppReducer.totalBalance,
+    userID: state.AppReducer.userData.uid,
   };
 }
 

@@ -13,7 +13,9 @@ import {
 } from "native-base";
 import firebase from "react-native-firebase";
 import { AccessToken, LoginManager } from "react-native-fbsdk";
-import store from "../../../redux/store";
+import { store } from "../../../redux/store";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 class Login extends Component {
 
@@ -125,4 +127,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#6E4F94"
   }
 });
-export default Login;
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
+export default connect(null, mapDispatchToProps)(Login)
