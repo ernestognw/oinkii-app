@@ -28,7 +28,9 @@ class RecordModal extends Component {
   }
 
   addGoal = () => {
-    // Pending...
+    this.props.actions.addGoalAsync(this.props.goalsForm, this.props.userID)
+    Alert.alert("Meta registrada ;)", 'Tu meta ha sido registrada correctamente'); 
+    this.props.navigation.navigate('SwitchNavigator');
   }
 
   handleIncomeInputChange = (value, name) => {
@@ -41,6 +43,10 @@ class RecordModal extends Component {
 
   handleEditInputChange = (value, name) => {
     this.props.actions.handleEditModalInputChange(value, name)
+  }
+
+  handleGoalsInputChange = (value, name) => {
+    this.props.actions.handleGoalsModalInputChange(value, name)
   }
 
   render(){
@@ -69,8 +75,12 @@ class RecordModal extends Component {
         handleInputChange={this.handleEditInputChange}
         buttonAction={this.editRecord}
       /> :
-      this.props.routeName == 'GoalModal' ?
-      <GoalsModal /> : 
+      this.props.routeName == 'GoalsModal' ?
+      <GoalsModal 
+        form={this.props.goalsForm}
+        handleInputChange={this.handleGoalsInputChange}
+        buttonAction={this.addGoal}
+      /> : 
       null
   );
   }
@@ -82,6 +92,7 @@ function mapStateToProps (state) {
     incomeForm: state.AppReducer.incomeForm,
     expenseForm: state.AppReducer.expenseForm,
     editForm: state.AppReducer.editForm,
+    goalsForm: state.AppReducer.goalsForm,
     userID: state.AppReducer.userData.uid
   }
 }

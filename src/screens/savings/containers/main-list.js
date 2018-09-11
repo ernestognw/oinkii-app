@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Text, View, StyleSheet, Alert } from "react-native";
-import ListRecord from "./list-record";
-import EmptyList from "./empty-list";
+import ListRecord from "../components/list-record";
+import EmptyList from "../components/empty-list";
 import { List, Button, Icon, SwipeRow } from "native-base";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';

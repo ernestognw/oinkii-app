@@ -3,7 +3,6 @@ import { Container, Text, Form, Item, Label, Input, Icon } from "native-base";
 import { View, TouchableOpacity, StyleSheet } from "react-native";
 import ModalDatePicker from './modal-datepicker';
 import ModalHourpicker from './modal-hourpicker';
-import { color } from 'color';
 
 function IncomeModal(props) {
   return (
@@ -21,6 +20,7 @@ function IncomeModal(props) {
           color="#A1BE4F"
           handleFormChange={value => props.handleInputChange(value, "date")}
           date={props.form.date}
+          placeholder="Fecha"
         />
         <ModalHourpicker 
           color="#A1BE4F"

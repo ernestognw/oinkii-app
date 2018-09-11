@@ -2,27 +2,27 @@ import React from "react";
 import { ListItem, Left, Body, Right, Icon, View } from "native-base";
 import { Text, StyleSheet } from "react-native";
 
-function GoalRecord(props) {
+function ListRecord(props) {
   return (
     <View style={styles.mainView}>
       <ListItem avatar>
         <Left>
           <Icon
             type="MaterialIcons"
-            name={props.income ? "attach-money" : "money-off"}
-            style={props.income ? styles.iconIncome : styles.iconExpense}
+            name={"money-off"}
+            style={styles.iconIncome}
           />
         </Left>
         <Body style={styles.normalizeStyleDetails}>
           <Text style={styles.quantity}>${props.quantity}</Text>
           <Text style={styles.comment}>{props.description}</Text>
         </Body>
-        <Right style={styles.normalizeStyleDetails}>
+        {/* <Right style={styles.normalizeStyleDetails}>
           <Text note style={styles.comment}>{props.hour}</Text>
           <Text note style={styles.date}>
             {props.date}
           </Text>
-        </Right>
+        </Right> */}
       </ListItem>
     </View>
   );
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
     flex: 1
   }
 });
-export default GoalRecord;
+export default ListRecord;

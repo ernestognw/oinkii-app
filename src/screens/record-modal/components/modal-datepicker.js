@@ -10,7 +10,7 @@ function ModalDatepicker(props) {
       <DatePicker
         date={props.date}
         mode="date"
-        placeholder="Fecha"
+        placeholder={props.placeholder}
         format="ll"
         minDate="2016-05-01"
         maxDate="2022-12-32"
@@ -42,8 +42,8 @@ function ModalDatepicker(props) {
             paddingRight: 5,
             paddingTop: 3,
             marginLeft: 6,
+            width: 280,
           }
-          // ... You can check the source to find the other keys.
         }}
         onDateChange={props.handleFormChange}
       />
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 15,
     borderColor: "#D9D5DC",
-    flexDirection: "row"
+    flexDirection: "row",
   }
 });
 

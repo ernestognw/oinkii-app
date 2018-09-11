@@ -15,8 +15,11 @@ initialState = {
   AppReducer: {
     balanceData: "",
     sortedBalanceIndex: "",
-    bookLoaded: false,
     balanceDataLoaded: false,
+    goalsData: "",
+    sortedGoalsIndex: "",
+    goalsDataLoaded: false,
+    bookLoaded: false,
     incomeForm: {
       description: "",
       date: "",
@@ -39,7 +42,12 @@ initialState = {
       income: false,
       time: "",
       id: ""
-    }
+    },
+    goalsForm: {
+      description: "",
+      dateToAccomplish: "",
+      quantity: "",
+    },
   }
 };
 

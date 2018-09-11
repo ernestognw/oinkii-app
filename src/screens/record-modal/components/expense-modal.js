@@ -20,6 +20,7 @@ function IncomeModal(props) {
           color="#B73A77"
           handleFormChange={value => props.handleInputChange(value, "date")}
           date={props.form.date}
+          placeholder="Fecha"
         />
         <ModalHourpicker 
           color="#B73A77"

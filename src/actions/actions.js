@@ -1,4 +1,5 @@
 import firebase from "react-native-firebase";
+import { AccessToken, LoginManager } from "react-native-fbsdk";
 
 export function handleIncomeModalInputChange(value, name) {
   return {
@@ -23,6 +24,16 @@ export function handleExpenseModalInputChange(value, name) {
 export function handleEditModalInputChange(value, name) {
   return {
     type: "CHANGE_EDIT_MODAL_INPUT",
+    payload: {
+      value,
+      name,
+    }
+  };
+}
+
+export function handleGoalsModalInputChange(value, name) {
+  return {
+    type: "CHANGE_GOALS_MODAL_INPUT",
     payload: {
       value,
       name,
@@ -67,6 +78,28 @@ export function setBalanceData(balanceData) {
   }
 }
 
+export function setGoalsData(goalsData) {
+  let keyIndex = Object.keys(goalsData);
+  let sortedGoalsIndex = [];
+
+  for (let id in goalsData){
+    id = id.toString();
+    sortedGoalsIndex.push([id, goalsData[id].timeToAccomplish])
+  }
+
+  sortedGoalsIndex.sort((a,b) => {
+    return a[1] - b[1]
+  })
+
+  return {
+    type: "SET_GOALS_DATA",
+    payload: {
+      goalsData,
+      sortedGoalsIndex,
+    }
+  }
+}
+
 export function bookLoaded() {
   return {
     type: "BOOK_LOADED"
@@ -75,14 +108,34 @@ export function bookLoaded() {
 
 export function addRecordAsync(record, userID) {
   let id = Date.now();
-  record.quantity = Number(record.quantity)
   record.id = id;
+
+  record.quantity = Number(record.quantity)
   record.time = new Date(record.date + " " + record.hour).getTime();
 
   return (dispatch) => {firebase.database().ref("nativeApp/"+ userID + "/balance/" + id)
     .update(record)
     .then(data => {
-      dispatch(cleanForm(record.income));
+      dispatch(cleanRecordForm(record.income));
+    })
+    .catch(error => {
+      alert('Ha ocurrido un error en el registro');
+      console.log("error ", error);
+    });
+  }
+}
+
+export function addGoalAsync(goal, userID) {
+  let id = Date.now();
+  goal.id = id;
+
+  goal.quantity = Number(goal.quantity)
+  goal.timeToAccomplish = new Date(goal.dateToAccomplish).getTime();
+
+  return (dispatch) => {firebase.database().ref("nativeApp/"+ userID + "/goals/" + id)
+    .update(goal)
+    .then(data => {
+      dispatch(cleanGoalForm());
     })
     .catch(error => {
       alert('Ha ocurrido un error en el registro');
@@ -127,13 +180,70 @@ export function openEditModal(recordID){
   }
 }
 
+export function handleLoginAsync() {
+  return async (dispatch) => {
+    try {
+      const result = await LoginManager.logInWithReadPermissions([
+        "public_profile",
+        "email"
+      ]);
+
+      if (result.isCancelled) {
+        throw new Error("User cancelled request"); // Handle this however fits the flow of your app
+      }
+
+      console.log(
+        `Login success with permissions: ${result.grantedPermissions.toString()}`
+      );
+
+      // get the access token
+      const data = await AccessToken.getCurrentAccessToken();
+
+      if (!data) {
+        throw new Error(
+          "Something went wrong obtaining the users access token"
+        ); // Handle this however fits the flow of your app
+      }
+
+      // create a new firebase credential with the token
+      const credential = firebase.auth.FacebookAuthProvider.credential(
+        data.accessToken
+      );
+
+      // login with credential
+      const currentUser = await firebase
+        .auth()
+        .signInAndRetrieveDataWithCredential(credential);
+
+      dispatch(handleLogin(currentUser.user));
+    } catch (e) {
+      console.error(e);
+    }
+  }
+}
+
 // Functions called by other ASYNC functions
 
-function cleanForm(isIncome) {
+function cleanRecordForm(isIncome) {
   return {
-    type: "CLEAN_FORM",
+    type: "CLEAN_RECORD_FORM",
     payload: {
       isIncome
+    }
+  }
+}
+
+function cleanGoalForm() {
+  return {
+    type: "CLEAN_GOAL_FORM"
+  }
+}
+
+function handleLogin(userData) {
+  return {
+    type: "SET_USER_DATA",
+    payload: {
+      userData,
     }
   }
 }

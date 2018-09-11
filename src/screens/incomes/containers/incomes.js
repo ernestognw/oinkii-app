@@ -4,7 +4,7 @@ import MainCard from "../../savings/components/main-card";
 import { View } from "react-native";
 import AppLayout from "../../../structure/components/app-layout";
 import { connect } from "react-redux";
-import MainList from "../../savings/components/main-list";
+import MainList from "../../savings/containers/main-list";
 import firebase from "react-native-firebase";
 import { bindActionCreators } from 'redux';
 import * as actions from '../../../actions/actions'

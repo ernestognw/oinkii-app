@@ -12,6 +12,15 @@ function AppReducer(state = {}, action) {
       };
     }
 
+    case "SET_GOALS_DATA": {
+      return {
+        ...state,
+        goalsData: action.payload.goalsData,
+        sortedGoalsIndex: action.payload.sortedGoalsIndex,
+        goalsDataLoaded: true
+      };
+    }
+
     case "SET_USER_DATA": {
       return {
         ...state,
@@ -26,65 +35,138 @@ function AppReducer(state = {}, action) {
       };
     }
 
-    case "CHANGE_INCOME_MODAL_INPUT" : {
-      switch (action.payload.name){
+    case "CHANGE_INCOME_MODAL_INPUT": {
+      switch (action.payload.name) {
         case "description": {
-          return {...state, incomeForm: {...state.incomeForm, description: action.payload.value}};
+          return {
+            ...state,
+            incomeForm: {
+              ...state.incomeForm,
+              description: action.payload.value
+            }
+          };
         }
         case "date": {
-          return {...state, incomeForm: {...state.incomeForm, date: action.payload.value}};
+          return {
+            ...state,
+            incomeForm: { ...state.incomeForm, date: action.payload.value }
+          };
         }
         case "hour": {
-          return {...state, incomeForm: {...state.incomeForm, hour: action.payload.value}};
+          return {
+            ...state,
+            incomeForm: { ...state.incomeForm, hour: action.payload.value }
+          };
         }
         case "quantity": {
-          return {...state, incomeForm: {...state.incomeForm, quantity: action.payload.value}};
+          return {
+            ...state,
+            incomeForm: { ...state.incomeForm, quantity: action.payload.value }
+          };
         }
         default:
           return state;
       }
     }
 
-    case "CHANGE_EXPENSE_MODAL_INPUT" : {
-      switch (action.payload.name){
+    case "CHANGE_EXPENSE_MODAL_INPUT": {
+      switch (action.payload.name) {
         case "description": {
-          return {...state, expenseForm: {...state.expenseForm, description: action.payload.value}};
+          return {
+            ...state,
+            expenseForm: {
+              ...state.expenseForm,
+              description: action.payload.value
+            }
+          };
         }
         case "date": {
-          return {...state, expenseForm: {...state.expenseForm, date: action.payload.value}};
+          return {
+            ...state,
+            expenseForm: { ...state.expenseForm, date: action.payload.value }
+          };
         }
         case "hour": {
-          return {...state, expenseForm: {...state.expenseForm, hour: action.payload.value}};
+          return {
+            ...state,
+            expenseForm: { ...state.expenseForm, hour: action.payload.value }
+          };
         }
         case "quantity": {
-          return {...state, expenseForm: {...state.expenseForm, quantity: action.payload.value}};
+          return {
+            ...state,
+            expenseForm: {
+              ...state.expenseForm,
+              quantity: action.payload.value
+            }
+          };
         }
         default:
           return state;
       }
     }
 
-    case "CHANGE_EDIT_MODAL_INPUT" : {
-      switch (action.payload.name){
+    case "CHANGE_EDIT_MODAL_INPUT": {
+      switch (action.payload.name) {
         case "description": {
-          return {...state, editForm: {...state.editForm, description: action.payload.value}};
+          return {
+            ...state,
+            editForm: { ...state.editForm, description: action.payload.value }
+          };
         }
         case "date": {
-          return {...state, editForm: {...state.editForm, date: action.payload.value}};
+          return {
+            ...state,
+            editForm: { ...state.editForm, date: action.payload.value }
+          };
         }
         case "hour": {
-          return {...state, editForm: {...state.editForm, hour: action.payload.value}};
+          return {
+            ...state,
+            editForm: { ...state.editForm, hour: action.payload.value }
+          };
         }
         case "quantity": {
-          return {...state, editForm: {...state.editForm, quantity: action.payload.value}};
+          return {
+            ...state,
+            editForm: { ...state.editForm, quantity: action.payload.value }
+          };
         }
         default:
           return state;
       }
     }
 
-    case "CLEAN_FORM": {
-      if (action.payload.isIncome == true) {
+    case "CHANGE_GOALS_MODAL_INPUT": {
+      switch (action.payload.name) {
+        case "description": {
+          return {
+            ...state,
+            goalsForm: { ...state.goalsForm, description: action.payload.value }
+          };
+        }
+        case "date": {
+          return {
+            ...state,
+            goalsForm: {
+              ...state.goalsForm,
+              dateToAccomplish: action.payload.value
+            }
+          };
+        }
+        case "quantity": {
+          return {
+            ...state,
+            goalsForm: { ...state.goalsForm, quantity: action.payload.value }
+          };
+        }
+        default:
+          return state;
+      }
+    }
+
+    case "CLEAN_RECORD_FORM": {
+      if (action.payload.isIncome) {
         return {
           ...state,
           incomeForm: {
@@ -95,7 +177,7 @@ function AppReducer(state = {}, action) {
             income: true
           }
         };
-      } else if (action.payload.isIncome == false) {
+      } else {
         return {
           ...state,
           expenseForm: {
@@ -107,7 +189,17 @@ function AppReducer(state = {}, action) {
           }
         };
       }
-      break;
+    }
+
+    case "CLEAN_GOAL_FORM": {
+      return {
+        ...state,
+        goalsForm: {
+          description: "",
+          dateToAccomplish: "",
+          quantity: ""
+        }
+      };
     }
 
     case "OPEN_EDIT_MODAL":
