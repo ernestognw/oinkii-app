@@ -54,6 +54,8 @@ class GoalsList extends Component {
                   <GoalRecord
                     quantity={this.props.data[key[0]].quantity}
                     description={this.props.data[key[0]].description}
+                    dateToAccomplish={this.props.data[key[0]].dateToAccomplish}
+                    totalBalance={this.props.totalBalance}
                   />
                 }
                 right={
@@ -76,4 +78,10 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(GoalsList);
+function mapStateToProps(state) {
+  return {
+    totalBalance: state.AppReducer.totalBalance,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GoalsList);

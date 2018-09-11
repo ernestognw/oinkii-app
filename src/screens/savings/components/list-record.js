@@ -18,7 +18,7 @@ function ListRecord(props) {
           <Text style={styles.comment}>{props.description}</Text>
         </Body>
         <Right style={styles.normalizeStyleDetails}>
-          <Text note style={styles.comment}>{props.hour}</Text>
+          <Text note style={styles.hour}>{props.hour}</Text>
           <Text note style={styles.date}>
             {props.date}
           </Text>
@@ -33,7 +33,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   date: {
-    marginTop: 5,
+    marginTop: 7,
+    fontSize: 10,
+  },
+  hour: {
+    fontWeight: '600',
+    fontSize: 14,
   },
   quantity: {
     fontWeight: "600",

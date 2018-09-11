@@ -1,47 +1,61 @@
 import React from "react";
 import { ListItem, Left, Body, Right, Icon, View } from "native-base";
 import { Text, StyleSheet } from "react-native";
+import * as Progress from 'react-native-progress';
 
 function ListRecord(props) {
+  let progress = 1;
+  if (props.totalBalance < props.quantity){
+    console.log('works')
+    progress = props.totalBalance / props.quantity;
+  }
   return (
     <View style={styles.mainView}>
       <ListItem avatar>
         <Left>
           <Icon
             type="MaterialIcons"
-            name={"money-off"}
+            name={"my-location"}
             style={styles.iconIncome}
           />
         </Left>
         <Body style={styles.normalizeStyleDetails}>
-          <Text style={styles.quantity}>${props.quantity}</Text>
-          <Text style={styles.comment}>{props.description}</Text>
+          <Text style={styles.description}>{props.description}</Text>
+          <Progress.Bar 
+            style={styles.progressBar}
+            progress={progress} 
+            indeterminate={false}
+            borderRadius={2.8}
+            height={3}
+            borderWidth={0}
+            width={null}
+            unfilledColor="#eaeaea"
+            color="#65A4D2"
+          />
         </Body>
-        {/* <Right style={styles.normalizeStyleDetails}>
-          <Text note style={styles.comment}>{props.hour}</Text>
+        <Right style={styles.normalizeStyleDetails}>
+          <Text note style={styles.percentage}>{progress.toFixed(2) * 100}%</Text>
           <Text note style={styles.date}>
-            {props.date}
+            {props.dateToAccomplish}
           </Text>
-        </Right> */}
+        </Right>
       </ListItem>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  comment: {
-    fontSize: 14,
-  },
   date: {
-    marginTop: 5,
+    marginTop: 10,
+    fontSize: 10,
   },
-  quantity: {
+  description: {
     fontWeight: "600",
-    fontSize: 18,
+    fontSize: 16,
   },
   iconIncome: {
-    color: "#A1BE4F",
-    fontSize: 20
+    color: "#65A4D2",
+    fontSize: 14,
   },
   iconExpense: {
     color: "#B73A77",
@@ -51,10 +65,19 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
     paddingBottom: 0,
     paddingRight: 0,
-    paddingTop: 0
+    paddingTop: 0,
+    justifyContent: 'center'
   },
   mainView: {
     flex: 1
+  },
+  progressBar: {
+    marginTop: 10,
+    marginRight: 15,
+  },
+  percentage: {
+    fontWeight: '600',
+    fontSize: 14,
   }
 });
 export default ListRecord;

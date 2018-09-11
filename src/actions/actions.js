@@ -84,7 +84,7 @@ export function setGoalsData(goalsData) {
 
   for (let id in goalsData){
     id = id.toString();
-    sortedGoalsIndex.push([id, goalsData[id].timeToAccomplish])
+    sortedGoalsIndex.push([id, goalsData[id].timeToAccomplish, goalsData[id].quantity])
   }
 
   sortedGoalsIndex.sort((a,b) => {

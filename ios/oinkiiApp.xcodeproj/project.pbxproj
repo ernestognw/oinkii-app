@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -45,6 +46,7 @@
 		4B450CFF9F9F4D29AE5B28F1 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C7E89CA1CCA44BC9ACCC823 /* libRCTFBSDK.a */; };
 		56D04D5E937C4ED39FB01284 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A84C682162D4C5294EA306D /* Ionicons.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		6B5EB3432147808C000EFCE9 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5EB31621478066000EFCE9 /* libART.a */; };
 		6BD59176214213E90085683B /* edu-fin.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6BD59175214213E90085683B /* edu-fin.pdf */; };
 		6BFE24C3213CC37B00D210CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BFE249B213CC37B00D210CE /* GoogleService-Info.plist */; };
 		6BFE24C4213CC37B00D210CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BFE249B213CC37B00D210CE /* GoogleService-Info.plist */; };
@@ -332,6 +334,20 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNFirebase;
 		};
+		6B5EB31521478066000EFCE9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B5EB31021478065000EFCE9 /* ART.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0CF68AC11AF0540F00FF9E5C;
+			remoteInfo = ART;
+		};
+		6B5EB31721478066000EFCE9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B5EB31021478065000EFCE9 /* ART.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 323A12871E5F266B004975B8;
+			remoteInfo = "ART-tvOS";
+		};
 		6BD59173214213D90085683B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4F6F7F03D31F40D5BEEF34BF /* ReactNativeViewPDF.xcodeproj */;
@@ -412,6 +428,7 @@
 		55F31304B30F42BBA0E05346 /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6A84C682162D4C5294EA306D /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		6B5EB31021478065000EFCE9 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
 		6BD59175214213E90085683B /* edu-fin.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "edu-fin.pdf"; sourceTree = "<group>"; };
 		6BFE249B213CC37B00D210CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6C7E89CA1CCA44BC9ACCC823 /* libRCTFBSDK.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTFBSDK.a; sourceTree = "<group>"; };
@@ -452,6 +469,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B5EB3432147808C000EFCE9 /* libART.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -688,6 +706,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6B5EB31121478065000EFCE9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6B5EB31621478066000EFCE9 /* libART.a */,
+				6B5EB31821478066000EFCE9 /* libART-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		6BD59170214213D90085683B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,6 +755,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				6B5EB31021478065000EFCE9 /* ART.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -913,6 +941,10 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 6B5EB31121478065000EFCE9 /* Products */;
+					ProjectRef = 6B5EB31021478065000EFCE9 /* ART.xcodeproj */;
+				},
 				{
 					ProductGroup = 6BFE2486213CC14A00D210CE /* Products */;
 					ProjectRef = AA30C0A691AE4AA4AD22EA43 /* BVLinearGradient.xcodeproj */;
@@ -1239,6 +1271,20 @@
 			fileType = archive.ar;
 			path = libRNFirebase.a;
 			remoteRef = 6B3A4196213CE08A0006B620 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6B5EB31621478066000EFCE9 /* libART.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libART.a;
+			remoteRef = 6B5EB31521478066000EFCE9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6B5EB31821478066000EFCE9 /* libART-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libART-tvOS.a";
+			remoteRef = 6B5EB31721478066000EFCE9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		6BD59174214213D90085683B /* libReactNativeViewPDF.a */ = {
