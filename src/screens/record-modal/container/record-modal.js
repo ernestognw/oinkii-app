@@ -22,7 +22,7 @@ class RecordModal extends Component {
   }
 
   editRecord = () => {
-    this.props.actions.editRecord(this.props.editForm, this.props.userID);
+    this.props.actions.editRecord(this.props.editRecordForm, this.props.userID);
     Alert.alert("Editado correctamente", 'Tu registro se ha editado correctamente'); 
     this.props.navigation.navigate('SwitchNavigator');
   }
@@ -30,6 +30,12 @@ class RecordModal extends Component {
   addGoal = () => {
     this.props.actions.addGoalAsync(this.props.goalsForm, this.props.userID)
     Alert.alert("Meta registrada ;)", 'Tu meta ha sido registrada correctamente'); 
+    this.props.navigation.navigate('SwitchNavigator');
+  }
+
+  editGoal = () => {
+    this.props.actions.editGoal(this.props.editGoalsForm, this.props.userID);
+    Alert.alert("Editado correctamente", 'Tu meta se ha editado correctamente'); 
     this.props.navigation.navigate('SwitchNavigator');
   }
 
@@ -49,6 +55,10 @@ class RecordModal extends Component {
     this.props.actions.handleGoalsModalInputChange(value, name)
   }
 
+  handleEditGoalsInputChange = (value, name) => {
+    this.props.actions.handleEditGoalsModalInputChange(value, name)
+  }
+
   render(){
     return (
       this.props.routeName == 'IncomeModal' ?
@@ -65,13 +75,13 @@ class RecordModal extends Component {
       /> :
       this.props.routeName == 'EditIncomeModal' ?
       <IncomeModal
-        form={this.props.editForm}
+        form={this.props.editRecordForm}
         handleInputChange={this.handleEditInputChange}
         buttonAction={this.editRecord}
       /> :
       this.props.routeName == 'EditExpenseModal' ?
       <ExpenseModal
-        form={this.props.editForm}
+        form={this.props.editRecordForm}
         handleInputChange={this.handleEditInputChange}
         buttonAction={this.editRecord}
       /> :
@@ -81,6 +91,12 @@ class RecordModal extends Component {
         handleInputChange={this.handleGoalsInputChange}
         buttonAction={this.addGoal}
       /> : 
+      this.props.routeName == 'EditGoalsModal' ?
+      <GoalsModal 
+        form={this.props.editGoalsForm}
+        handleInputChange={this.handleEditGoalsInputChange}
+        buttonAction={this.editGoal}
+      /> :
       null
   );
   }
@@ -91,8 +107,9 @@ function mapStateToProps (state) {
     routeName: state.nav.routes[1] ? state.nav.routes[1].routeName : '',
     incomeForm: state.AppReducer.incomeForm,
     expenseForm: state.AppReducer.expenseForm,
-    editForm: state.AppReducer.editForm,
+    editRecordForm: state.AppReducer.editRecordForm,
     goalsForm: state.AppReducer.goalsForm,
+    editGoalsForm: state.AppReducer.editGoalsForm,
     userID: state.AppReducer.userData.uid
   }
 }

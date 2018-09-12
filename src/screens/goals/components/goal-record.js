@@ -25,9 +25,9 @@ function ListRecord(props) {
   return (
     <View style={styles.mainView}>
       <ListItem avatar>
-        <Left>
+        <Left style={{}}>
           <Progress.Circle 
-            size={50} 
+            size={45} 
             indeterminate={false} 
             progress={progress}
             showsText={true}

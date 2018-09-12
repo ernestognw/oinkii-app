@@ -14,17 +14,23 @@ class GoalsList extends Component {
     this.selectedRow;
   }
 
-  deleteRecord = (recordID) => {
+  deleteGoal = (goalID) => {
     this.selectedRow._root.closeWindow();
-    this.props.actions.deleteRecord(recordID, "t6enDM7jEvVBTvjihRVJUCogrhy1");
-    Alert.alert("Elemento eliminado", 'El registro se eliminó exitosamente'); 
+    this.props.actions.deleteGoal(goalID, this.props.userID);
+    Alert.alert("Meta eliminada", 'La meta se eliminó exitosamente'); 
   }
 
-  openEditModal = (isIncome, recordID) => {
-    isIncome ?
-    this.props.navigation.navigate('EditIncomeModal') :
-    this.props.navigation.navigate('EditExpenseModal')
-    this.props.actions.openEditModal(recordID);
+  completeGoal = (goalID) => {
+    this.selectedRow._root.closeWindow();
+    this.props.actions.completeGoal(this.props.data[goalID], this.props.userID);
+    this.props.actions.addGoalToRecords(this.props.data[goalID], this.props.userID);
+    this.props.actions.deleteGoal(goalID, this.props.userID);
+    Alert.alert("¡Meta Completada!", "Te felicitamos por haberlo logrado. Ahora tu meta está en gastos")
+  }
+
+  openEditGoalsModal = (goalID) => {
+    this.props.navigation.navigate('EditGoalsModal')
+    this.props.actions.openEditGoalsModal(goalID);
     this.selectedRow._root.closeWindow();
   }
 
@@ -46,7 +52,7 @@ class GoalsList extends Component {
                   this.selectedRow = this.component[index]
                 }}
                 left={
-                  <Button danger onPress={() => {alert('Open Right 1')}}>
+                  <Button danger onPress={() => this.deleteGoal(key[0])}>
                     <Icon active type="MaterialIcons" name="close" />
                   </Button>
                 }
@@ -61,10 +67,10 @@ class GoalsList extends Component {
                 }
                 right={
                     <View style={styles.doubleButtonView}>
-                      <Button info style={styles.doubleButton} onPress={() => alert('Open Left')}>
+                      <Button info style={styles.doubleButton} onPress={() => this.openEditGoalsModal(key[0])}>
                         <Icon active type="MaterialIcons" name="edit" />
                       </Button>
-                      <Button success style={styles.doubleButton} onPress={() => {alert('Open Right 2')}}>
+                      <Button success style={styles.doubleButton} onPress={() => this.completeGoal(key[0])}>
                         <Icon active type="MaterialIcons" name="check" />
                       </Button>
                     </View>
@@ -98,6 +104,8 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     totalBalance: state.AppReducer.totalBalance,
+    userID: state.AppReducer.userData.uid,
+    editGoalsForm: state.AppReducer.editGoalForm,
   };
 }
 

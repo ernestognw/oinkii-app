@@ -41,6 +41,16 @@ export function handleGoalsModalInputChange(value, name) {
   };
 }
 
+export function handleEditGoalsModalInputChange(value, name) {
+  return {
+    type: "CHANGE_EDIT_GOALS_MODAL_INPUT",
+    payload: {
+      value,
+      name,
+    }
+  };
+}
+
 export function setBalanceData(balanceData) {
   let keyIndex = Object.keys(balanceData);
   let sortedBalanceIndex = [];
@@ -145,10 +155,108 @@ export function addGoalAsync(goal, userID) {
 }
 
 export function deleteRecord(recordID, userID) {
+  console.log(userID)
   return (dispatch) => {firebase.database().ref("nativeApp/"+ userID + "/balance/" + recordID)
     .remove()
     .then(data => {
       null
+    })
+    .catch(error => {
+      alert('Ha ocurrido un error en el registro');
+      console.log("error ", error);
+    });
+  }
+}
+
+export function deleteGoal(goalID, userID) {
+  return (dispatch) => {firebase.database().ref("nativeApp/"+ userID + "/goals/" + goalID)
+    .remove()
+    .then(data => {
+      null
+    })
+    .catch(error => {
+      alert('Ha ocurrido un error en el registro');
+      console.log("error ", error);
+    });
+  }
+}
+
+export function completeGoal(goalForm, userID) {  
+  // Save Goal into Completed Goals
+  return (dispatch) => {firebase.database().ref("nativeApp/"+ userID + "/completedGoals/" + goalForm.id)
+    .update(goalForm)
+    .then(data => {
+      null;
+    })
+    .catch(error => {
+      alert('Ha ocurrido un error en el registro');
+      console.log("error ", error);
+    });
+  }
+}
+
+
+export function addGoalToRecords(goalForm, userID) {
+  delete goalForm.dateToAccomplish;
+  delete goalForm.timeToAccomplish;
+
+  // Month Index
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ]
+
+  goalForm.income = false;
+  goalForm.time = Date.now();
+
+  let fullDate = new Date(goalForm.time)
+  
+  // Formatting Date
+  let month = fullDate.getMonth();
+  let day = fullDate.getDate();
+  let year = fullDate.getFullYear();
+
+  goalForm.date = `${months[month]} ${day}, ${year}`
+
+  // Formatting Hour
+  let hour = fullDate.getHours()
+  let minutes = fullDate.getMinutes()
+  let prefix;
+  console.log(hour)
+
+  if (hour > 12) {
+    hour -= 12;
+    if(hour == 24){
+      prefix = "am";
+    } else {
+      prefix = "pm";
+    }
+  } else {
+    if (hour == 12) {
+      prefix = "pm";
+    } else {
+      prefix = "am";
+    }
+  }
+
+  hour = ('0' + hour).slice(-2);
+
+  goalForm.hour = `${hour}:${minutes} ${prefix}`
+
+  return dispatch => {firebase.database().ref("nativeApp/"+ userID + "/balance/" + goalForm.id)
+    .update(goalForm)
+    .then(data => {
+      null;
     })
     .catch(error => {
       alert('Ha ocurrido un error en el registro');
@@ -171,11 +279,34 @@ export function editRecord(editForm, userID) {
   }
 }
 
-export function openEditModal(recordID){
+export function editGoal(editGoalsForm, userID) {
+  editGoalsForm.quantity = Number(editGoalsForm.quantity)
+  return (dispatch) => {firebase.database().ref("nativeApp/"+ userID + "/goals/" + editGoalsForm.id)
+    .update(editGoalsForm)
+    .then(data => {
+      null
+    })
+    .catch(error => {
+      alert('Ha ocurrido un error al editar');
+      console.log("error ", error);
+    });
+  }
+}
+
+export function openEditRecordModal(recordID){
   return {
-    type: 'OPEN_EDIT_MODAL',
+    type: 'OPEN_EDIT_RECORD_MODAL',
     payload: {
       recordID
+    }
+  }
+}
+
+export function openEditGoalsModal(goalID){
+  return {
+    type: 'OPEN_EDIT_GOALS_MODAL',
+    payload: {
+      goalID
     }
   }
 }

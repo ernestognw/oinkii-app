@@ -146,6 +146,16 @@ const ModalsNavigator = createStackNavigator(
         }
       }
     },
+    EditGoalsModal: {
+      screen: recordModal,
+      navigationOptions: {
+        title: 'Editar meta',
+        headerStyle: {
+          backgroundColor: '#65A4D2',
+          height: 130,
+        }
+      }
+    },
   },
   {
     initialRouteName: 'SwitchNavigator',

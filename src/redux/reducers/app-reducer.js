@@ -111,25 +111,25 @@ function AppReducer(state = {}, action) {
         case "description": {
           return {
             ...state,
-            editForm: { ...state.editForm, description: action.payload.value }
+            editRecordForm: { ...state.editRecordForm, description: action.payload.value }
           };
         }
         case "date": {
           return {
             ...state,
-            editForm: { ...state.editForm, date: action.payload.value }
+            editRecordForm: { ...state.editRecordForm, date: action.payload.value }
           };
         }
         case "hour": {
           return {
             ...state,
-            editForm: { ...state.editForm, hour: action.payload.value }
+            editRecordForm: { ...state.editRecordForm, hour: action.payload.value }
           };
         }
         case "quantity": {
           return {
             ...state,
-            editForm: { ...state.editForm, quantity: action.payload.value }
+            editRecordForm: { ...state.editRecordForm, quantity: action.payload.value }
           };
         }
         default:
@@ -158,6 +158,31 @@ function AppReducer(state = {}, action) {
           return {
             ...state,
             goalsForm: { ...state.goalsForm, quantity: action.payload.value }
+          };
+        }
+        default:
+          return state;
+      }
+    }
+
+    case "CHANGE_EDIT_GOALS_MODAL_INPUT": {
+      switch (action.payload.name) {
+        case "description": {
+          return {
+            ...state,
+            editGoalsForm: { ...state.editGoalsForm, description: action.payload.value }
+          };
+        }
+        case "date": {
+          return {
+            ...state,
+            editGoalsForm: { ...state.editGoalsForm, dateToAccomplish: action.payload.value }
+          };
+        }
+        case "quantity": {
+          return {
+            ...state,
+            editGoalsForm: { ...state.editGoalsForm, quantity: action.payload.value }
           };
         }
         default:
@@ -202,12 +227,21 @@ function AppReducer(state = {}, action) {
       };
     }
 
-    case "OPEN_EDIT_MODAL":
-      state.editForm = state.balanceData[action.payload.recordID];
-      state.editForm.quantity = state.editForm.quantity.toString();
+    case "OPEN_EDIT_RECORD_MODAL": {
+      state.editRecordForm = state.balanceData[action.payload.recordID];
+      state.editRecordForm.quantity = state.editRecordForm.quantity.toString();
       return {
         ...state
       };
+    }
+
+    case "OPEN_EDIT_GOALS_MODAL": {
+      state.editGoalsForm = state.goalsData[action.payload.goalID];
+      state.editGoalsForm.quantity = state.editGoalsForm.quantity.toString();
+      return {
+        ...state
+      };
+    }
 
     default:
       return state;

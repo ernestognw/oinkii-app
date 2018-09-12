@@ -16,16 +16,20 @@ class MainList extends Component {
 
   deleteRecord = (recordID) => {
     this.selectedRow._root.closeWindow();
-    this.props.actions.deleteRecord(recordID, "t6enDM7jEvVBTvjihRVJUCogrhy1");
+    this.props.actions.deleteRecord(recordID, this.props.userID);
     Alert.alert("Elemento eliminado", 'El registro se eliminó exitosamente'); 
   }
 
-  openEditModal = (isIncome, recordID) => {
+  openEditRecordModal = (isIncome, recordID) => {
     isIncome ?
     this.props.navigation.navigate('EditIncomeModal') :
     this.props.navigation.navigate('EditExpenseModal')
-    this.props.actions.openEditModal(recordID);
+    this.props.actions.openEditRecordModal(recordID);
     this.selectedRow._root.closeWindow();
+  }
+
+  edit = () => {
+    console.log('cool')
   }
 
   render() {
@@ -60,7 +64,7 @@ class MainList extends Component {
                   />
                 }
                 right={
-                  <Button info onPress={() => this.openEditModal(this.props.data[key[0]].income, this.props.data[key[0]].id)}>
+                  <Button info onPress={() => this.openEditRecordModal(this.props.data[key[0]].income, this.props.data[key[0]].id)}>
                     <Icon active type="MaterialIcons" name="edit" />
                   </Button>
                 }
@@ -75,8 +79,14 @@ class MainList extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(actions, dispatch),
   };
 }
 
-export default connect(null, mapDispatchToProps)(MainList);
+function mapStateToProps (state) {
+  return {
+    userID: state.AppReducer.userData.uid,
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainList);

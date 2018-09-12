@@ -34,7 +34,7 @@ initialState = {
       quantity: "",
       income: false
     },
-    editForm: {
+    editRecordForm: {
       description: "",
       date: "",
       hour: "",
@@ -42,6 +42,11 @@ initialState = {
       income: false,
       time: "",
       id: ""
+    },
+    editGoalsForm: {
+      description: "",
+      dateToAccomplish: "",
+      quantity: "",
     },
     goalsForm: {
       description: "",
