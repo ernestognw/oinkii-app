@@ -19,14 +19,14 @@ function MainCard(props) {
       >
         <Title style={styles.buttonText}>{props.title}</Title>
         {
-          props.value ? 
-          <View style={styles.numberContainer}>
-            <Text style={styles.moneySign}>$</Text>
-            <Text style={styles.mainNumber}>{ints}</Text>
-            <Text style={styles.cents}>.{cents}</Text>
-          </View> :
+          !props.dataLoaded ?
           <View style={styles.numberContainer}>
             <ActivityIndicator size="small" color="white"/>
+          </View> :
+          <View style={styles.numberContainer}>
+            <Text style={styles.moneySign}>$</Text>
+            <Text style={styles.mainNumber}>{props.value ? ints : '0'}</Text>
+            <Text style={styles.cents}>.{props.value ? cents : '00'}</Text>
           </View>
         }
         {props.buttons ? <CardButtons buttons={props.buttons} /> : null}

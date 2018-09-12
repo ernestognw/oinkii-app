@@ -39,13 +39,17 @@ class Goals extends Component {
           title="Metas"
           value="120"
           buttons={this.buttons}
+          dataLoaded={this.props.goalsDataLoaded}
         />
         <Title padder>Lista de Metas</Title>
         <GoalsList 
           navigation={this.props.navigation}
           data={this.props.goalsData}
-          userDataLoaded={this.props.balanceGoalsLoaded}
+          goalsDataLoaded={this.props.goalsDataLoaded}
           sortedGoalsIndex={this.props.sortedGoalsIndex}
+          color="#65A4D2"
+          emptyButtonAction={this.addGoal}
+          emptyMessage="Registra tu primer meta"
         />
       </AppLayout>
     )

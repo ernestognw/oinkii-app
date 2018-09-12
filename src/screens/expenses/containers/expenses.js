@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Title } from "native-base";
 import MainCard from "../../savings/components/main-card";
-import { View } from "react-native";
+import { View, Alert } from "react-native";
 import AppLayout from "../../../structure/components/app-layout";
 import MainList from "../../savings/containers/main-list";
 import { connect } from "react-redux";
@@ -10,9 +10,12 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../../../actions/actions';
 
 class Expenses extends Component {
-
   addExpense = () => {
+    if(this.props.totalBalance <= 0){
+      Alert.alert("Registra un ingreso", "Para poder gastar, primero debes conseguir ingresos.")
+    } else {
     this.props.navigation.navigate('ExpenseModal')
+    }
   }
 
   buttons = [
@@ -32,6 +35,10 @@ class Expenses extends Component {
         sortedExpensesList.push(this.props.sortedBalanceIndex[i]);
       }
     }
+
+    if (sortedExpensesList == []) {
+      sortedExpensesList = "";
+    }
     
     return (
       <AppLayout>
@@ -41,6 +48,7 @@ class Expenses extends Component {
           title="Gastos" 
           value={this.props.totalExpense} 
           buttons={this.buttons}
+          dataLoaded={this.props.balanceDataLoaded}
         />
         <Title padder>Detalles</Title>
         <MainList
@@ -48,6 +56,9 @@ class Expenses extends Component {
           data={this.props.balanceData}
           balanceDataLoaded={this.props.balanceDataLoaded}
           sortedBalanceIndex={sortedExpensesList}
+          color="#B73A77"
+          emptyButtonAction={this.addExpense}
+          emptyMessage="Registra tu primer gasto"
         />
       </AppLayout>
     );
@@ -60,6 +71,7 @@ function mapStateToProps(state) {
     balanceDataLoaded: state.AppReducer.balanceDataLoaded,
     sortedBalanceIndex: state.AppReducer.sortedBalanceIndex,
     totalExpense: state.AppReducer.totalExpense,
+    totalBalance: state.AppReducer.totalBalance,
   };
 }
 

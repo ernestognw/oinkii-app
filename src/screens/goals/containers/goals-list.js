@@ -21,11 +21,15 @@ class GoalsList extends Component {
   }
 
   completeGoal = (goalID) => {
-    this.selectedRow._root.closeWindow();
-    this.props.actions.completeGoal(this.props.data[goalID], this.props.userID);
-    this.props.actions.addGoalToRecords(this.props.data[goalID], this.props.userID);
-    this.props.actions.deleteGoal(goalID, this.props.userID);
-    Alert.alert("¡Meta Completada!", "Te felicitamos por haberlo logrado. Ahora tu meta está en gastos")
+    if(this.props.data[goalID].quantity <= this.props.totalBalance){
+      this.selectedRow._root.closeWindow();
+      this.props.actions.completeGoal(this.props.data[goalID], this.props.userID);
+      this.props.actions.addGoalToRecords(this.props.data[goalID], this.props.userID);
+      this.props.actions.deleteGoal(goalID, this.props.userID);
+      Alert.alert("¡Meta Completada!", "Te felicitamos por haberlo logrado. Ahora tu meta está en gastos")
+    } else {
+      Alert.alert("Aún no puedes completar esta meta", 'Todavía te falta ahorrar para completarla'); 
+    }
   }
 
   openEditGoalsModal = (goalID) => {
@@ -37,8 +41,14 @@ class GoalsList extends Component {
   render() {
     return (
       <List>
-        {!this.props.sortedGoalsIndex ? (
-          <EmptyList loaded={this.props.userDataLoaded} />
+        {
+          this.props.sortedGoalsIndex.length == 0 ? (
+          <EmptyList 
+            loaded={this.props.goalsDataLoaded}
+            color={this.props.color}
+            buttonAction={this.props.emptyButtonAction}
+            message={this.props.emptyMessage}
+          />
         ) : (
           this.props.sortedGoalsIndex.map((key, index) => {
             return (

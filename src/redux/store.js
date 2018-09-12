@@ -14,10 +14,13 @@ const NavigationMiddleware = createReactNavigationReduxMiddleware(
 initialState = {
   AppReducer: {
     balanceData: "",
-    sortedBalanceIndex: "",
+    sortedBalanceIndex: [],
     balanceDataLoaded: false,
+    totalIncome: 0,
+    totalExpense: 0,
+    totalBalance: 0,
     goalsData: "",
-    sortedGoalsIndex: "",
+    sortedGoalsIndex: [],
     goalsDataLoaded: false,
     bookLoaded: false,
     incomeForm: {

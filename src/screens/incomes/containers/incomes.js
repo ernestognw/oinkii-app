@@ -10,7 +10,6 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../../../actions/actions'
 
 class Incomes extends Component {
-
   addIncome = () => {
     this.props.navigation.navigate('IncomeModal')
   }
@@ -41,6 +40,7 @@ class Incomes extends Component {
           title="Ingresos"
           value={this.props.totalIncome}
           buttons={this.buttons}
+          dataLoaded={this.props.balanceDataLoaded}
         />
         <Title padder>Detalles</Title>
         <MainList
@@ -48,6 +48,9 @@ class Incomes extends Component {
           data={this.props.balanceData}
           balanceDataLoaded={this.props.balanceDataLoaded}
           sortedBalanceIndex={sortedIncomesList}
+          color="#A1BE4F"
+          emptyButtonAction={this.addIncome}
+          emptyMessage="Registra tu primer ingreso"
         />
       </AppLayout>
     );

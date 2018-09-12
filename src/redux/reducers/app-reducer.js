@@ -24,7 +24,8 @@ function AppReducer(state = {}, action) {
     case "SET_USER_DATA": {
       return {
         ...state,
-        userData: action.payload.userData
+        userData: action.payload.userData,
+        isNewUser: action.payload.isNewUser,
       };
     }
 

@@ -52,29 +52,31 @@ export function handleEditGoalsModalInputChange(value, name) {
 }
 
 export function setBalanceData(balanceData) {
-  let keyIndex = Object.keys(balanceData);
+  let keyIndex = [];
   let sortedBalanceIndex = [];
 
   let totalIncome = 0;
   let totalExpense = 0;
   let totalBalance = 0;
 
-  for (let id in balanceData){
-    sortedBalanceIndex.push([id, balanceData[id].time, balanceData[id].income, balanceData[id].quantity])
-    if(balanceData[id].income) {
-      totalIncome += balanceData[id].quantity;
-    } else {
-      totalExpense += balanceData[id].quantity;
+  if (balanceData) {
+    keyIndex = Object.keys(balanceData);
+
+    for (let id in balanceData){
+      sortedBalanceIndex.push([id, balanceData[id].time, balanceData[id].income, balanceData[id].quantity])
+      if(balanceData[id].income) {
+        totalIncome += balanceData[id].quantity;
+      } else {
+        totalExpense += balanceData[id].quantity;
+      }
     }
+
+    totalBalance = totalIncome - totalExpense
+
+    sortedBalanceIndex.sort((a,b) => {
+      return b[1] - a[1]
+    })
   }
-
-  totalBalance = totalIncome - totalExpense
-
-  sortedBalanceIndex.sort((a,b) => {
-    return b[1] - a[1]
-  })
-
-  console.log(sortedBalanceIndex);
 
   return {
     type: "SET_BALANCE_DATA",
@@ -89,17 +91,20 @@ export function setBalanceData(balanceData) {
 }
 
 export function setGoalsData(goalsData) {
-  let keyIndex = Object.keys(goalsData);
+  let keyIndex = [];
   let sortedGoalsIndex = [];
 
-  for (let id in goalsData){
-    id = id.toString();
-    sortedGoalsIndex.push([id, goalsData[id].timeToAccomplish, goalsData[id].quantity])
-  }
+  if (goalsData) {
+    keyIndex = Object.keys(goalsData);
+    for (let id in goalsData){
+      id = id.toString();
+      sortedGoalsIndex.push([id, goalsData[id].timeToAccomplish, goalsData[id].quantity])
+    }
 
-  sortedGoalsIndex.sort((a,b) => {
-    return a[1] - b[1]
-  })
+    sortedGoalsIndex.sort((a,b) => {
+      return a[1] - b[1]
+    })
+  }
 
   return {
     type: "SET_GOALS_DATA",
@@ -346,7 +351,7 @@ export function handleLoginAsync() {
         .auth()
         .signInAndRetrieveDataWithCredential(credential);
 
-      dispatch(handleLogin(currentUser.user));
+      dispatch(handleLogin(currentUser.user, currentUser.additionalUserInfo.isNewUser));
     } catch (e) {
       console.error(e);
     }
@@ -370,11 +375,12 @@ function cleanGoalForm() {
   }
 }
 
-function handleLogin(userData) {
+function handleLogin(userData, isNewUser) {
   return {
     type: "SET_USER_DATA",
     payload: {
       userData,
+      isNewUser,
     }
   }
 }

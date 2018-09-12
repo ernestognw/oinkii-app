@@ -49,13 +49,17 @@ class Savings extends Component {
           title="Mi Dinero"
           value={this.props.totalBalance}
           buttons={this.buttons}
+          dataLoaded={this.props.balanceDataLoaded}
         />
         <Title padder>Detalles</Title>
         <MainList
           navigation={this.props.navigation}
           data={this.props.balanceData}
-          userDataLoaded={this.props.balanceDataLoaded}
+          balanceDataLoaded={this.props.balanceDataLoaded}
           sortedBalanceIndex={this.props.sortedBalanceIndex}
+          color="#6E4F94"
+          emptyButtonAction={this.addIncome}
+          emptyMessage="Registra tu primer ingreso"
         />
       </AppLayout>
     );

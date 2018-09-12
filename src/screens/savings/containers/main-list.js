@@ -28,15 +28,17 @@ class MainList extends Component {
     this.selectedRow._root.closeWindow();
   }
 
-  edit = () => {
-    console.log('cool')
-  }
-
   render() {
     return (
       <List>
-        {!this.props.sortedBalanceIndex ? (
-          <EmptyList loaded={this.props.userDataLoaded} />
+        {
+          this.props.sortedBalanceIndex.length == 0 ? (
+          <EmptyList 
+            loaded={this.props.balanceDataLoaded}
+            color={this.props.color}
+            buttonAction={this.props.emptyButtonAction}
+            message={this.props.emptyMessage}
+          />
         ) : (
           this.props.sortedBalanceIndex.map((key, index) => {
             return (

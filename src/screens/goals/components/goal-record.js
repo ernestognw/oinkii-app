@@ -31,7 +31,7 @@ function ListRecord(props) {
             indeterminate={false} 
             progress={progress}
             showsText={true}
-            formatText={() => progress.toFixed(2) * 100 + "%"} 
+            formatText={() => (progress.toFixed(2) * 100).toFixed(0) + "%"} 
             color={color}
             unfilledColor="#eaeaea"
             borderWidth={0}

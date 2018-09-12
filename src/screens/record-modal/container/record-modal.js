@@ -10,33 +10,81 @@ import { Text, Alert } from 'react-native';
 class RecordModal extends Component {
 
   addIncome = () => {
-    this.props.actions.addRecordAsync(this.props.incomeForm, this.props.userID);
-    Alert.alert("Ingreso registrado ;)",'Tu ingreso ha sido registrado correctamente');    
-    this.props.navigation.navigate('SwitchNavigator');
+    if (
+      this.props.incomeForm.description != "" &&
+      this.props.incomeForm.date != "" &&
+      this.props.incomeForm.hour != "" &&
+      this.props.incomeForm.quantity != ""
+    ) {
+      this.props.actions.addRecordAsync(this.props.incomeForm, this.props.userID);
+      Alert.alert("Ingreso registrado ;)",'Tu ingreso ha sido registrado correctamente');    
+      this.props.navigation.navigate('SwitchNavigator');
+    } else {
+      Alert.alert("Completa los campos", "Para poder registrar un ingreso, debes llenar los campos");
+    }
   }
 
   addExpense = () => {
-    this.props.actions.addRecordAsync(this.props.expenseForm, this.props.userID);
-    Alert.alert("Gasto registrado ;)", 'Tu gasto ha sido registrado correctamente'); 
-    this.props.navigation.navigate('SwitchNavigator');
+    if (
+      this.props.expenseForm.description != "" &&
+      this.props.expenseForm.date != "" &&
+      this.props.expenseForm.hour != "" &&
+      this.props.expenseForm.quantity != ""
+    ) {
+      if(this.props.expenseForm.quantity <= this.props.totalBalance){
+        this.props.actions.addRecordAsync(this.props.expenseForm, this.props.userID);
+        Alert.alert("Gasto registrado ;)", 'Tu gasto ha sido registrado correctamente'); 
+        this.props.navigation.navigate('SwitchNavigator');
+      } else {
+        Alert.alert("¡Cuidado!", "No puedes gastar dinero que no tienes. Revisa tu gasto.");
+        this.props.navigation.navigate('SwitchNavigator');
+      }
+    } else {
+      Alert.alert("Completa los campos", "Para poder registrar un gasto, debes llenar los campos");
+    }
   }
 
   editRecord = () => {
-    this.props.actions.editRecord(this.props.editRecordForm, this.props.userID);
-    Alert.alert("Editado correctamente", 'Tu registro se ha editado correctamente'); 
-    this.props.navigation.navigate('SwitchNavigator');
+    if (
+      this.props.editRecordForm.description != "" &&
+      this.props.editRecordForm.date != "" &&
+      this.props.editRecordForm.hour != "" &&
+      this.props.editRecordForm.quantity != ""
+    ){
+      this.props.actions.editRecord(this.props.editRecordForm, this.props.userID);
+      Alert.alert("Editado correctamente", 'Tu registro se ha editado correctamente'); 
+      this.props.navigation.navigate('SwitchNavigator');
+    } else {
+      Alert.alert("Completa los campos", "Para poder editar un registro, debes llenar los campos");
+    }
   }
 
   addGoal = () => {
-    this.props.actions.addGoalAsync(this.props.goalsForm, this.props.userID)
-    Alert.alert("Meta registrada ;)", 'Tu meta ha sido registrada correctamente'); 
-    this.props.navigation.navigate('SwitchNavigator');
+    if (
+      this.props.goalsForm.description != "" &&
+      this.props.goalsForm.dateToAccomplish != "" &&
+      this.props.goalsForm.quantity != ""
+    ){
+      this.props.actions.addGoalAsync(this.props.goalsForm, this.props.userID)
+      Alert.alert("Meta registrada ;)", 'Tu meta ha sido registrada correctamente'); 
+      this.props.navigation.navigate('SwitchNavigator');
+    } else {
+      Alert.alert("Completa los campos", "Para poder añadir una meta, debes llenar los campos");
+    }
   }
 
   editGoal = () => {
-    this.props.actions.editGoal(this.props.editGoalsForm, this.props.userID);
-    Alert.alert("Editado correctamente", 'Tu meta se ha editado correctamente'); 
-    this.props.navigation.navigate('SwitchNavigator');
+    if (
+      this.props.editGoalsForm.description != "" &&
+      this.props.editGoalsForm.dateToAccomplish != "" &&
+      this.props.editGoalsForm.quantity != ""
+    ){
+      this.props.actions.editGoal(this.props.editGoalsForm, this.props.userID);
+      Alert.alert("Editado correctamente", 'Tu meta se ha editado correctamente'); 
+      this.props.navigation.navigate('SwitchNavigator');
+    } else {
+      Alert.alert("Completa los campos", "Para poder editar una meta, debes llenar los campos");
+    }
   }
 
   handleIncomeInputChange = (value, name) => {
@@ -110,7 +158,8 @@ function mapStateToProps (state) {
     editRecordForm: state.AppReducer.editRecordForm,
     goalsForm: state.AppReducer.goalsForm,
     editGoalsForm: state.AppReducer.editGoalsForm,
-    userID: state.AppReducer.userData.uid
+    totalBalance: state.AppReducer.totalBalance,
+    userID: state.AppReducer.userData.uid,
   }
 }
 
