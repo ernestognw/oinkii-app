@@ -15,6 +15,7 @@ import HeaderLayout from './structure/components/header-layout';
 import Login from './screens/login/containers/login';
 import Loading from "./screens/login/containers/loading";
 import recordModal from './screens/record-modal/container/record-modal';
+import Walkthrough from './screens/login/containers/walkthrough';
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -82,6 +83,7 @@ const SwitchNavigator = createSwitchNavigator(
     App: TabNavigator,
     Login: Login,
     Loading: Loading,
+    Walkthrough: Walkthrough,
   },
   {
     initialRouteName: 'Loading',

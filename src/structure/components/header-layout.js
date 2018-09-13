@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Left, Header, Icon, Right, Body } from "native-base";
-import { Image } from 'react-native';
+import { Image, Alert } from 'react-native';
 import { StyleSheet } from 'react-native';
 
 function HeaderLayout(props) {
@@ -20,7 +20,18 @@ function HeaderLayout(props) {
         style={styles.logo}
       />
       </Body>
-      <Right />
+      <Right>
+        {
+          props.right ?
+          <Button 
+            transparent
+            onPress={() => Alert.alert("Conecta tu alcancía", "Próximamente podrás sincronizar los datos de tu alcancía Oinkii con la app")}
+          >
+            <Icon type="MaterialIcons" name="sync"></Icon>
+          </Button>
+          : null
+        }
+      </Right>
     </Header>
   );
 }

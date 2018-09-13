@@ -42,7 +42,7 @@ class Savings extends Component {
 
   render() {
     return (
-      <AppLayout>
+      <AppLayout right>
         <MainCard
           initialColor="#6E4F94"
           finalColor="#402B60"

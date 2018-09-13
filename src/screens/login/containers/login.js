@@ -20,7 +20,11 @@ class Login extends Component {
 
   facebookLogin = async () => {
     await this.props.actions.handleLoginAsync();
-    this.props.navigation.navigate("App");
+    if (!this.props.isNewUser){
+      this.props.navigation.navigate("App");
+    } else {
+      this.props.navigation.navigate("Walkthrough")
+    }
   };
 
   render() {
@@ -83,10 +87,16 @@ const styles = StyleSheet.create({
   }
 });
 
+function mapStateToProps(state) {
+  return {
+    isNewUser: state.AppReducer.isNewUser,
+  };
+}
+
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(actions, dispatch)
   };
 }
 
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -5,7 +5,9 @@ import HeaderLayout from './header-layout';
 function AppLayout (props) {
   return (
     <Container>
-      <HeaderLayout />
+      <HeaderLayout
+        right={props.right}
+      />
       <Content>
         {props.children}
       </Content>
